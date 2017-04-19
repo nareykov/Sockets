@@ -1,5 +1,7 @@
 package packet;
 
+import source.ServerLoader;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -35,6 +37,7 @@ public class PacketAuthorize extends OPacket {
 
     @Override
     public void handle() {
-
+        ServerLoader.getHandle(socket).setNickname(nickname);
+        System.out.println("Authorized " + nickname);
     }
 }

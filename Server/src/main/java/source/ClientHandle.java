@@ -13,11 +13,11 @@ import java.net.Socket;
  */
 public class ClientHandle extends Thread {
     private final Socket client;
-    public String nickname;
+    public String nickname = "Noname";
 
     ClientHandle(Socket client) {
         this.client = client;
-        start();
+        //start();
     }
 
     public String getNickname() {
@@ -31,25 +31,19 @@ public class ClientHandle extends Thread {
     @Override
     public void run() {
         while (true) {
-            try {
-                DataInputStream dis = new DataInputStream(client.getInputStream());
-                if (dis.available() > 0) { //если количество доступных байт для чтения больше нуля
-                    System.out.println(dis.readInt());
-                    ServerLoader.end();
+
+            if (!readData()) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
 
         }
     }
 
-    private void readData() {
+    private boolean readData() {
         try {
             DataInputStream dis = new DataInputStream(client.getInputStream());
             if (dis.available() > 0) {
@@ -59,11 +53,12 @@ public class ClientHandle extends Thread {
                 packet.read(dis);
                 packet.handle();
             } else {
-                return;
+                return false;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
     public void invalidate() {
