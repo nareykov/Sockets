@@ -1,5 +1,6 @@
 package source.packet;
 
+import source.DataBase;
 import source.ServerLoader;
 import source.classes.User;
 
@@ -11,6 +12,8 @@ import java.io.*;
 public class PacketRegister extends OPacket {
 
     private User user;
+
+    DataBase db = new DataBase();
 
     public PacketRegister() {
 
@@ -43,5 +46,7 @@ public class PacketRegister extends OPacket {
     public void handle() {
         ServerLoader.getHandle(socket).setUser(user);
         System.out.println("Authorized " + user.getNickname());
+        db.connectToDataBase();
+        db.closeDataBase();
     }
 }
