@@ -1,60 +1,82 @@
 package source;
 
-import packet.OPacket;
-import packet.PacketAuthorize;
-import packet.PacketManager;
+import org.omg.CORBA.Object;
+import source.classes.User;
+import source.packet.OPacket;
+import source.packet.PacketManager;
 
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 /**
  * Created by narey on 23.03.2017.
  */
 public class ClientHandle extends Thread {
     private final Socket client;
-    public String nickname = "Noname";
+    private User user = new User("Noname", "Noname");
 
     ClientHandle(Socket client) {
         this.client = client;
         //start();
     }
 
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
     @Override
     public void run() {
         while (true) {
-
-            if (!readData()) {
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            try {
+                ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
+                if (ois.available() > 0) {
+                    short id = ois.readShort();
+                    OPacket packet = PacketManager.getPacket(id);
+                    packet.setSocket(client);
+                    packet.read(ois);
+                    packet.handle();
+                } else {
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
+            }catch (Exception e){
+                e.printStackTrace();
+                try {
+                    client.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                System.out.println(user.getNickname() + " interrupted");
+                currentThread().interrupt();
+                return;
 
+            }
         }
     }
 
     private boolean readData() {
         try {
-            DataInputStream dis = new DataInputStream(client.getInputStream());
-            if (dis.available() > 0) {
-                short id = dis.readShort();
+            ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
+            if (ois.available() > 0) {
+                short id = ois.readShort();
                 OPacket packet = PacketManager.getPacket(id);
                 packet.setSocket(client);
-                packet.read(dis);
+                packet.read(ois);
                 packet.handle();
             } else {
                 return false;
             }
+        }catch (SocketException e){
+            try {
+                client.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            System.out.println(user.getNickname() + " interrupted");
+            currentThread().interrupt();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,5 +85,13 @@ public class ClientHandle extends Thread {
 
     public void invalidate() {
         ServerLoader.invalidate(client);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

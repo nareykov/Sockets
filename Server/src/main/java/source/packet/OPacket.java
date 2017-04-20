@@ -1,8 +1,6 @@
-package packet;
+package source.packet;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -22,9 +20,9 @@ public abstract class OPacket {
 
     public abstract short getId();
 
-    public abstract void write(DataOutputStream dos) throws IOException;
+    public abstract void write(ObjectOutputStream oos) throws IOException;
 
-    public abstract void read(DataInputStream dis) throws IOException;
+    public abstract void read(ObjectInputStream ois) throws IOException;
 
     public abstract void handle();
 

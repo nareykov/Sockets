@@ -1,7 +1,14 @@
 package source.gui;
 
+import source.classes.User;
+import source.packet.PacketRegister;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  * Created by narey on 11.04.2017.
@@ -10,7 +17,43 @@ public class EnterWindow {
     EnterWindow() {
         JFrame frame = new JFrame("Enter");
         frame.setSize(250, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent event) {
+                Main.end();
+                System.exit(0);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
         frame.setLocation(500,250);
         frame.setResizable(false);
 
@@ -23,13 +66,19 @@ public class EnterWindow {
         JLabel errorLbl = new JLabel("(Error message)");
 
         Dimension dimensionText = new Dimension(100,25);
-        JTextField username = new JTextField();
+        final JTextField username = new JTextField();
         username.setPreferredSize(dimensionText);
-        JTextField password = new JTextField();
+        final JTextField password = new JTextField();
         password.setPreferredSize(dimensionText);
 
         Dimension dimensionBtn = new Dimension(100,25);
         JButton regBtn = new JButton("Register");
+        regBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.sendPacket(new PacketRegister(new User(username.getText(), password.getText())));
+            }
+        });
         regBtn.setPreferredSize(dimensionBtn);
         JButton enterBtn = new JButton("Enter");
         enterBtn.setPreferredSize(dimensionBtn);

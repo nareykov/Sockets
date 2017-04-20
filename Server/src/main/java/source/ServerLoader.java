@@ -1,13 +1,12 @@
 package source;
 
-import packet.OPacket;
-import source.ClientHandle;
+import source.packet.OPacket;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -29,10 +28,10 @@ public class ServerLoader {
 
     public static void sendPacket(Socket receiver, OPacket packet) {
         try {
-            DataOutputStream dos = new DataOutputStream(receiver.getOutputStream());
-            dos.writeShort(packet.getId());
-            packet.write(dos);
-            dos.flush();
+            ObjectOutputStream oos = new ObjectOutputStream(receiver.getOutputStream());
+            oos.writeShort(packet.getId());
+            packet.write(oos);
+            oos.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
