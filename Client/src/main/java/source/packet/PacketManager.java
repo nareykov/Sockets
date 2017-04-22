@@ -12,6 +12,7 @@ public class PacketManager {
 
     static  {
         packets.put((short) 1, PacketRegister.class);
+        packets.put((short) 2, PacketEnter.class);
         //..........
         //..........
     }

@@ -165,15 +165,15 @@ public class DataBase {
 
     /**
      * Проверка логина и пароля пользователя при нажатии на Enter в окне входа.
-     * @param email Мыло пользователя
+     * @param username Мыло пользователя
      * @param pass Пароль
      * @return true - верный логин и пароль, false - неверные логин или пароль
      */
-    /*public boolean enter(String email, String pass) {
+    public boolean enter(String username, String pass) {
         try {
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM Users WHERE Email = '" + email + "';" );
-            if ((pass + salt).equals(rs.getString("Pass"))) {
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Users WHERE Username = '" + username + "';" );
+            if ((pass).equals(rs.getString("Pass"))) {
                 rs.close();
                 stmt.close();
                 return true;
@@ -181,11 +181,10 @@ public class DataBase {
             rs.close();
             stmt.close();
         } catch ( Exception e ) {
-            log.info("Incorrect login or password");
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
         return false;
-    }*/
+    }
 
     /**
      * ищет в базе данных файл по имени и, в случае успеха, возвращает полный путь.
@@ -213,14 +212,13 @@ public class DataBase {
 
     /**
      * Проверяет был ли зарегистрирован пользователь ранее.
-     * @param email Мыло пользователя
      * @return Если уже зарегистрирован - true, если нет - false.
      */
-    /*public boolean isRegistered(String email) {
+    public boolean isRegistered(String username) {
         try {
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM Users WHERE Email = '" + email + "';" );
-            if (rs.getString("Email") != null) {
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Users WHERE Username = '" + username + "';" );
+            if (rs.getString("Username") != null) {
                 rs.close();
                 stmt.close();
                 return true;
@@ -231,13 +229,7 @@ public class DataBase {
             return false;
         }
         return false;
-    }*/
-
-    /**
-     * Достает из базы данных и возвращает кол-во оставшихся байт у текущего пользователя.
-     * @param currUser Мыло текущего польвателя
-     * @return Возвращает кол-во доступных пользователю байт
-     */
+    }
 
 
     /**

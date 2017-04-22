@@ -19,6 +19,8 @@ public class ServerLoader {
     private static ServerSocket server;
     private static ServerHandler handler;
     public static Map<Socket, ClientHandle> handlers = new HashMap<>();
+    private static String adminName = "admin";
+    private static String adminPass = "admin";
 
     public static void main(String[] args) {
         start();
@@ -93,5 +95,13 @@ public class ServerLoader {
 
     public static void invalidate(Socket socket) {
         handlers.remove(socket);
+    }
+
+    public static String getAdminName() {
+        return adminName;
+    }
+
+    public static String getAdminPass() {
+        return adminPass;
     }
 }

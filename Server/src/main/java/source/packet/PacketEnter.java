@@ -4,12 +4,14 @@ import source.DataBase;
 import source.ServerLoader;
 import source.classes.User;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 20.04.2017.
+ * Created by narey on 22.04.2017.
  */
-public class PacketRegister extends OPacket {
+public class PacketEnter extends OPacket {
 
     private User user;
 
@@ -17,17 +19,17 @@ public class PacketRegister extends OPacket {
 
     private static String answer;
 
-    public PacketRegister() {
+    public PacketEnter() {
 
     }
 
-    public PacketRegister(User user) {
+    public PacketEnter(User user) {
         this.user = user;
     }
 
     @Override
     public short getId() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -47,16 +49,18 @@ public class PacketRegister extends OPacket {
     @Override
     public void handle() {
         ServerLoader.getHandle(socket).setUser(user);
-        db.connectToDataBase();
-        if (!db.isRegistered(user.getNickname())) {
-            db.insertIntoUsers(user.getNickname(), user.getPassword());
-            System.out.println("Success");
-            answer = "Success";
+        if (user.getNickname().equals(ServerLoader.getAdminName()) && user.getPassword().equals(ServerLoader.getAdminPass())) {
+            answer = "Admin";
         } else {
-            System.out.println("User is registered");
-            answer = "User is registered";
+            db.connectToDataBase();
+            if (db.enter(user.getNickname(), user.getPassword())) {
+                answer = "Success";
+            } else {
+                answer = "Incorrect login or password";
+
+            }
+            db.closeDataBase();
         }
-        db.closeDataBase();
-        ServerLoader.sendPacket(socket, new PacketRegister());
+        ServerLoader.sendPacket(socket, new PacketEnter());
     }
 }

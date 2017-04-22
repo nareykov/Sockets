@@ -1,31 +1,32 @@
 package source.packet;
 
-import org.omg.CORBA.Object;
 import source.classes.User;
-import source.gui.RegisterWindow;
+import source.gui.EnterWindow;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 20.04.2017.
+ * Created by narey on 22.04.2017.
  */
-public class PacketRegister extends OPacket{
+public class PacketEnter extends OPacket {
 
     private User user;
 
     private String answer;
 
-    public PacketRegister() {
+    public PacketEnter() {
 
     }
 
-    public PacketRegister(User user) {
+    public PacketEnter(User user) {
         this.user = user;
     }
 
     @Override
     public short getId() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -40,7 +41,6 @@ public class PacketRegister extends OPacket{
 
     @Override
     public void handle() {
-        RegisterWindow.setAnswer(answer);
+        EnterWindow.setAnswer(answer);
     }
-
 }

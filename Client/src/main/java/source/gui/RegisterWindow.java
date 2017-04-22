@@ -1,16 +1,25 @@
 package source.gui;
 
+import source.classes.User;
+import source.packet.PacketRegister;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by narey on 11.04.2017.
  */
 public class RegisterWindow {
-    RegisterWindow() {
-        JFrame frame = new JFrame("Register");
+
+    private JFrame frame;
+
+    private static String answer;
+
+    public RegisterWindow() {
+        frame = new JFrame("Register");
         frame.setSize(250, 250);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(500,250);
         frame.setResizable(false);
 
@@ -21,18 +30,37 @@ public class RegisterWindow {
         JLabel usernameLbl = new JLabel("Username:");
         JLabel passwordLbl = new JLabel("Password:");
         JLabel confirmLbl = new JLabel("Confirm:");
-        JLabel errorLbl = new JLabel("(Error message)");
+        final JLabel errorLbl = new JLabel("");
 
         Dimension dimensionText = new Dimension(100,25);
-        JTextField username = new JTextField();
+        final JTextField username = new JTextField();
         username.setPreferredSize(dimensionText);
-        JTextField password = new JTextField();
+        final JTextField password = new JTextField();
         password.setPreferredSize(dimensionText);
-        JTextField confirm = new JTextField();
+        final JTextField confirm = new JTextField();
         confirm.setPreferredSize(dimensionText);
 
         Dimension dimensionBtn = new Dimension(100,25);
-        JButton regBtn = new JButton("Register");
+        final JButton regBtn = new JButton("Register");
+        regBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!(username.getText().equals("") || password.getText().equals("") || confirm.getText().equals(""))) {
+                    if (password.getText().equals(confirm.getText())) {
+                        Main.sendPacket(new PacketRegister(new User(username.getText(), password.getText())));
+                        if (answer.equals("Success")) {
+                            close();
+                        } else {
+                            errorLbl.setText(answer);
+                        }
+                    } else {
+                        errorLbl.setText("Password not confirmed");
+                    }
+                } else {
+                    errorLbl.setText("Empty field");
+                }
+            }
+        });
         regBtn.setPreferredSize(dimensionBtn);
 
         cons.weightx = 1.0;
@@ -83,5 +111,17 @@ public class RegisterWindow {
         frame.add(errorLbl);
 
         frame.setVisible(true);
+    }
+
+    public void close() {
+        frame.dispose();
+    }
+
+    public static String getAnswer() {
+        return answer;
+    }
+
+    public static void setAnswer(String answer) {
+        RegisterWindow.answer = answer;
     }
 }

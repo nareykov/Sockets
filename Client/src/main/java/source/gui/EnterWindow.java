@@ -1,6 +1,7 @@
 package source.gui;
 
 import source.classes.User;
+import source.packet.PacketEnter;
 import source.packet.PacketRegister;
 
 import javax.swing.*;
@@ -14,8 +15,13 @@ import java.awt.event.WindowListener;
  * Created by narey on 11.04.2017.
  */
 public class EnterWindow {
+
+    private JFrame frame;
+
+    private static String answer;
+
     EnterWindow() {
-        JFrame frame = new JFrame("Enter");
+        frame = new JFrame("Enter");
         frame.setSize(250, 200);
         frame.addWindowListener(new WindowListener() {
             @Override
@@ -63,7 +69,7 @@ public class EnterWindow {
 
         JLabel usernameLbl = new JLabel("Username:");
         JLabel passwordLbl = new JLabel("Password:");
-        JLabel errorLbl = new JLabel("(Error message)");
+        final JLabel errorLbl = new JLabel("(Error message)");
 
         Dimension dimensionText = new Dimension(100,25);
         final JTextField username = new JTextField();
@@ -76,11 +82,26 @@ public class EnterWindow {
         regBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.sendPacket(new PacketRegister(new User(username.getText(), password.getText())));
+                Main.setRegisterWindow(new RegisterWindow());
             }
         });
         regBtn.setPreferredSize(dimensionBtn);
         JButton enterBtn = new JButton("Enter");
+        enterBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!(username.getText().equals("") || password.getText().equals(""))) {
+                    Main.sendPacket(new PacketEnter(new User(username.getText(), password.getText())));
+                    if (answer.equals("Success")) {
+                        close();
+                    } else {
+                        errorLbl.setText(answer);
+                    }
+                } else {
+                    errorLbl.setText("Empty field");
+                }
+            }
+        });
         enterBtn.setPreferredSize(dimensionBtn);
 
         cons.weightx = 1.0;
@@ -125,5 +146,19 @@ public class EnterWindow {
         frame.add(errorLbl);
 
         frame.setVisible(true);
+    }
+
+    public void close() {
+        frame.dispose();
+        Main.end();
+        System.exit(0);
+    }
+
+    public static String getAnswer() {
+        return answer;
+    }
+
+    public static void setAnswer(String answer) {
+        EnterWindow.answer = answer;
     }
 }

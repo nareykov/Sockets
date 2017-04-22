@@ -14,13 +14,16 @@ import java.net.Socket;
  */
 public class Main {
 
+    private static EnterWindow enterWindow;
+    private static RegisterWindow registerWindow;
+
     private static Socket socket;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 connect();
-                new EnterWindow();
+                enterWindow = new EnterWindow();
             }
         });
     }
@@ -72,9 +75,25 @@ public class Main {
             oos.writeShort(packet.getId());
             packet.write(oos);
             oos.flush();
+            waitServer();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public static EnterWindow getEnterWindow() {
+        return enterWindow;
+    }
+
+    public static void setEnterWindow(EnterWindow enterWindow) {
+        Main.enterWindow = enterWindow;
+    }
+
+    public static RegisterWindow getRegisterWindow() {
+        return registerWindow;
+    }
+
+    public static void setRegisterWindow(RegisterWindow registerWindow) {
+        Main.registerWindow = registerWindow;
+    }
 }

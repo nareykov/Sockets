@@ -56,7 +56,7 @@ public class ClientHandle extends Thread {
         }
     }
 
-    private boolean readData() {
+/*    private boolean readData() {
         try {
             ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
             if (ois.available() > 0) {
@@ -81,7 +81,7 @@ public class ClientHandle extends Thread {
             e.printStackTrace();
         }
         return true;
-    }
+    }*/
 
     public void invalidate() {
         ServerLoader.invalidate(client);
