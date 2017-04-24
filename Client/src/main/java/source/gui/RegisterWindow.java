@@ -35,9 +35,9 @@ public class RegisterWindow {
         Dimension dimensionText = new Dimension(100,25);
         final JTextField username = new JTextField();
         username.setPreferredSize(dimensionText);
-        final JTextField password = new JTextField();
+        final JPasswordField password = new JPasswordField();
         password.setPreferredSize(dimensionText);
-        final JTextField confirm = new JTextField();
+        final JPasswordField confirm = new JPasswordField();
         confirm.setPreferredSize(dimensionText);
 
         Dimension dimensionBtn = new Dimension(100,25);

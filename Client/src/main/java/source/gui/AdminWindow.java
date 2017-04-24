@@ -1,18 +1,26 @@
 package source.gui;
 
+import source.packet.PacketLoadAdminTable;
+
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
 
 /**
  * Created by narey on 12.04.2017.
  */
 public class AdminWindow {
+
+    private JTable table = new JTable(3, 3);
+
     AdminWindow() {
-        JFrame frame = new JFrame("Admin");
+        final JFrame frame = new JFrame("Admin");
         frame.setSize(515, 470);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.addWindowListener(new MyWindowListener());
         frame.setLocation(400,100);
         frame.setResizable(false);
 
@@ -25,20 +33,14 @@ public class AdminWindow {
 
         JButton backBtn = new JButton(new ImageIcon(backImg.getImage().getScaledInstance(30, 30, backImg.getImage().SCALE_DEFAULT)));
         backBtn.setBorderPainted(false);
+        backBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                Main.setEnterWindow(new EnterWindow());
+            }
+        });
         toolBar.add(backBtn);
-
-        String[] headers = {"id", "Username", "lol"};
-        Object[][] data = {
-                {"d" , "dasfg", "fdsg"}
-        };
-
-        JTable table = new JTable(data, headers);
-
-        TableColumnModel columnModel = table.getColumnModel();
-        TableColumn column = columnModel.getColumn(0);
-        column.setPreferredWidth(30);
-        column = columnModel.getColumn(1);
-        column.setPreferredWidth(250);
 
         JScrollPane scrollPane = new JScrollPane(table);
 
@@ -46,5 +48,13 @@ public class AdminWindow {
         frame.add(scrollPane);
 
         frame.setVisible(true);
+    }
+
+    public JTable getTable() {
+        return table;
+    }
+
+    public void setTable(JTable table) {
+        this.table = table;
     }
 }

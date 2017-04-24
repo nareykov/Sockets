@@ -2,6 +2,8 @@ package source.gui;
 
 import source.classes.User;
 import source.packet.PacketEnter;
+import source.packet.PacketLoadAdminTable;
+import source.packet.PacketLoadMainTable;
 import source.packet.PacketRegister;
 
 import javax.swing.*;
@@ -19,47 +21,12 @@ public class EnterWindow {
     private JFrame frame;
 
     private static String answer;
+    private static int priority;
 
     EnterWindow() {
         frame = new JFrame("Enter");
         frame.setSize(250, 200);
-        frame.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowClosing(WindowEvent event) {
-                Main.end();
-                System.exit(0);
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-
-            }
-        });
+        frame.addWindowListener(new MyWindowListener());
         frame.setLocation(500,250);
         frame.setResizable(false);
 
@@ -74,7 +41,7 @@ public class EnterWindow {
         Dimension dimensionText = new Dimension(100,25);
         final JTextField username = new JTextField();
         username.setPreferredSize(dimensionText);
-        final JTextField password = new JTextField();
+        final JPasswordField password = new JPasswordField();
         password.setPreferredSize(dimensionText);
 
         Dimension dimensionBtn = new Dimension(100,25);
@@ -92,8 +59,14 @@ public class EnterWindow {
             public void actionPerformed(ActionEvent e) {
                 if (!(username.getText().equals("") || password.getText().equals(""))) {
                     Main.sendPacket(new PacketEnter(new User(username.getText(), password.getText())));
-                    if (answer.equals("Success")) {
-                        close();
+                    if (answer.equals("Admin")) {
+                        Main.setAdminWindow(new AdminWindow());
+                        Main.sendPacket(new PacketLoadAdminTable());
+                        frame.dispose();
+                    } else if (answer.equals("Success")) {
+                        Main.setMainWindow(new MainWindow(priority));
+                        Main.sendPacket(new PacketLoadMainTable());
+                        frame.dispose();
                     } else {
                         errorLbl.setText(answer);
                     }
@@ -148,17 +121,19 @@ public class EnterWindow {
         frame.setVisible(true);
     }
 
-    public void close() {
-        frame.dispose();
-        Main.end();
-        System.exit(0);
-    }
-
     public static String getAnswer() {
         return answer;
     }
 
     public static void setAnswer(String answer) {
         EnterWindow.answer = answer;
+    }
+
+    public static void setPriority(int priority) {
+        EnterWindow.priority = priority;
+    }
+
+    public static int getPriority() {
+        return priority;
     }
 }

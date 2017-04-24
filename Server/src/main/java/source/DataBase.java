@@ -75,7 +75,8 @@ public class DataBase {
             stmt = c.createStatement();
             String sql = "CREATE TABLE Users " +
                     "(Username      TEXT           NOT NULL," +
-                    " Pass          TEXT           NOT NULL)";
+                    " Pass          TEXT           NOT NULL," +
+                    " Priority      TEXT           NOT NULL)";
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
@@ -126,11 +127,11 @@ public class DataBase {
         System.out.println("Database closed successfully");
     }
 
-    public void insertIntoUsers(String username, String pass) {
+    public void insertIntoUsers(String username, String pass, int priority) {
         try {
             stmt = c.createStatement();
-            String sql = "INSERT INTO Users (Username, Pass) " +
-                    "VALUES ('" + username + "', '" +  pass + "');";
+            String sql = "INSERT INTO Users (Username, Pass, Priority) " +
+                    "VALUES ('" + username + "', '" +  pass + "', '" + Integer.toString(priority) +"');";
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
@@ -178,37 +179,52 @@ public class DataBase {
                 stmt.close();
                 return true;
             }
-            rs.close();
-            stmt.close();
-        } catch ( Exception e ) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        } catch ( SQLException e ) {
+            return false;
         }
         return false;
     }
 
-    /**
-     * ищет в базе данных файл по имени и, в случае успеха, возвращает полный путь.
-     * Если не найден, возвращает null.
-     * @param name имя файла
-     * @return Возвращает полный путь искомого файла
-     */
-    /*public String searchInFileBase(String name) {
+    public ResultSet getUsersResultSet() {
+
         try {
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM FileBase WHERE Name = '" + name + "';" );
-            if (rs.getString("Name") != null) {
-                String path = rs.getString("Path");
-                rs.close();
-                stmt.close();
-                return path;
-            }
-            rs.close();
-            stmt.close();
-        } catch ( Exception e ) {
+
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Users;" );
+            return rs;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
-        return null;
-    }*/
+    }
+
+    public ResultSet getFileBaseResultSet() {
+
+        try {
+            stmt = c.createStatement();
+
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM FileBase;" );
+            return rs;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void changePriority(String username, int priority) {
+        try {
+            stmt = c.createStatement();
+
+            String sql = "UPDATE Users SET Priority = " + Integer.toString(priority) + " WHERE Username = '" + username + "';";
+            stmt.executeUpdate(sql);
+            stmt.close();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Проверяет был ли зарегистрирован пользователь ранее.
@@ -229,6 +245,21 @@ public class DataBase {
             return false;
         }
         return false;
+    }
+
+    public int getPriority(String username) {
+        try {
+            stmt = c.createStatement();
+
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Users WHERE Username = '" + username + "';" );
+            int priority = Integer.parseInt(rs.getString("Priority"));
+            return priority;
+
+        } catch ( Exception e ) {
+            //log.error("User not found");
+            //System.out.println("User not found");
+            return -1;
+        }
     }
 
 

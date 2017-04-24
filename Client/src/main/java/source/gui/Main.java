@@ -4,10 +4,12 @@ import source.packet.OPacket;
 import source.packet.PacketManager;
 
 import javax.swing.*;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 /**
  * Created by narey on 11.04.2017.
@@ -16,6 +18,8 @@ public class Main {
 
     private static EnterWindow enterWindow;
     private static RegisterWindow registerWindow;
+    private static AdminWindow adminWindow;
+    private static MainWindow mainWindow;
 
     private static Socket socket;
 
@@ -28,7 +32,7 @@ public class Main {
         });
     }
 
-    private static void waitServer() {
+    private synchronized static void waitServer() {
         while (true) {
             try {
                 ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
@@ -45,8 +49,9 @@ public class Main {
                 packet.read(ois);
                 packet.handle();
                 break;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                end();
             }
         }
     }
@@ -69,12 +74,13 @@ public class Main {
         }
     }
 
-    public static void sendPacket(OPacket packet) {
+    public synchronized static void sendPacket(OPacket packet) {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             oos.writeShort(packet.getId());
             packet.write(oos);
             oos.flush();
+            System.out.println("Отправлен пакет" + packet.getId());
             waitServer();
         } catch (IOException e) {
             e.printStackTrace();
@@ -95,5 +101,21 @@ public class Main {
 
     public static void setRegisterWindow(RegisterWindow registerWindow) {
         Main.registerWindow = registerWindow;
+    }
+
+    public static AdminWindow getAdminWindow() {
+        return adminWindow;
+    }
+
+    public static void setAdminWindow(AdminWindow adminWindow) {
+        Main.adminWindow = adminWindow;
+    }
+
+    public static MainWindow getMainWindow() {
+        return mainWindow;
+    }
+
+    public static void setMainWindow(MainWindow mainWindow) {
+        Main.mainWindow = mainWindow;
     }
 }

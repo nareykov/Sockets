@@ -18,6 +18,7 @@ public class PacketEnter extends OPacket {
     DataBase db = new DataBase();
 
     private static String answer;
+    private static int priority;
 
     public PacketEnter() {
 
@@ -35,6 +36,7 @@ public class PacketEnter extends OPacket {
     @Override
     public void write(ObjectOutputStream oos) throws IOException {
         oos.writeUTF(answer);
+        oos.writeInt(priority);
     }
 
     @Override
@@ -51,13 +53,15 @@ public class PacketEnter extends OPacket {
         ServerLoader.getHandle(socket).setUser(user);
         if (user.getNickname().equals(ServerLoader.getAdminName()) && user.getPassword().equals(ServerLoader.getAdminPass())) {
             answer = "Admin";
+            priority = 2;
         } else {
             db.connectToDataBase();
             if (db.enter(user.getNickname(), user.getPassword())) {
                 answer = "Success";
+                priority = db.getPriority(user.getNickname());
             } else {
                 answer = "Incorrect login or password";
-
+                priority = -1;
             }
             db.closeDataBase();
         }

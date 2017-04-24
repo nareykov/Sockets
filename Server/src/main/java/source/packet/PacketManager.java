@@ -13,6 +13,9 @@ public class PacketManager {
     static  {
         packets.put((short) 1, PacketRegister.class);
         packets.put((short) 2, PacketEnter.class);
+        packets.put((short) 3, PacketLoadAdminTable.class);
+        packets.put((short) 4, PacketChangePriority.class);
+        packets.put((short) 5, PacketLoadMainTable.class);
         //..........
         //..........
     }

@@ -4,13 +4,23 @@ import javax.swing.*;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by narey on 12.04.2017.
  */
 public class MainWindow {
-    MainWindow() {
-        JFrame frame = new JFrame("Main");
+
+    private JTable table = new JTable(3, 3);
+
+    private int priority = 0;
+
+    MainWindow(int priority) {
+        this.priority = priority;
+        System.out.println("Priority: " + priority);
+
+        final JFrame frame = new JFrame("Main");
         frame.setSize(515, 470);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(400,100);
@@ -25,28 +35,26 @@ public class MainWindow {
         ImageIcon caseImg = new ImageIcon("Client\\src\\main\\resources\\S085.png");
         ImageIcon delImg = new ImageIcon("Client\\src\\main\\resources\\S016.png");
 
-        JButton backBtn = new JButton(new ImageIcon(backImg.getImage().getScaledInstance(30, 30, backImg.getImage().SCALE_DEFAULT)));
-        backBtn.setBorderPainted(false);
-        toolBar.add(backBtn);
         JButton caseBtn = new JButton(new ImageIcon(caseImg.getImage().getScaledInstance(30, 30, caseImg.getImage().SCALE_DEFAULT)));
         caseBtn.setBorderPainted(false);
         toolBar.add(caseBtn);
         JButton delBtn = new JButton(new ImageIcon(delImg.getImage().getScaledInstance(30, 30, delImg.getImage().SCALE_DEFAULT)));
         delBtn.setBorderPainted(false);
         toolBar.add(delBtn);
-
-        String[] headers = {"id", "Surname Name Patronymic"};
-        Object[][] data = {
-                {"dsafd" , "dasfg"}
-        };
-
-        JTable table = new JTable(data, headers);
-
-        TableColumnModel columnModel = table.getColumnModel();
-        TableColumn column = columnModel.getColumn(0);
-        column.setPreferredWidth(30);
-        column = columnModel.getColumn(1);
-        column.setPreferredWidth(350);
+        if (priority < 2) {
+            caseBtn.setVisible(false);
+            delBtn.setVisible(false);
+        }
+        JButton backBtn = new JButton(new ImageIcon(backImg.getImage().getScaledInstance(30, 30, backImg.getImage().SCALE_DEFAULT)));
+        backBtn.setBorderPainted(false);
+        backBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                Main.setEnterWindow(new EnterWindow());
+            }
+        });
+        toolBar.add(backBtn);
 
         JScrollPane scrollPane = new JScrollPane(table);
 
@@ -54,5 +62,9 @@ public class MainWindow {
         frame.add(scrollPane);
 
         frame.setVisible(true);
+    }
+
+    public JTable getTable() {
+        return table;
     }
 }

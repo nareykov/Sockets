@@ -15,6 +15,7 @@ public class PacketEnter extends OPacket {
     private User user;
 
     private String answer;
+    private int priority;
 
     public PacketEnter() {
 
@@ -37,10 +38,12 @@ public class PacketEnter extends OPacket {
     @Override
     public void read(ObjectInputStream ois) throws IOException {
         answer = ois.readUTF();
+        priority = ois.readInt();
     }
 
     @Override
     public void handle() {
         EnterWindow.setAnswer(answer);
+        EnterWindow.setPriority(priority);
     }
 }

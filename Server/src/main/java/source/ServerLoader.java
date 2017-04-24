@@ -28,7 +28,7 @@ public class ServerLoader {
         end();
     }
 
-    public static void sendPacket(Socket receiver, OPacket packet) {
+    public synchronized static void sendPacket(Socket receiver, OPacket packet) {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(receiver.getOutputStream());
             oos.writeShort(packet.getId());

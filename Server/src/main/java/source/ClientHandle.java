@@ -6,6 +6,7 @@ import source.packet.OPacket;
 import source.packet.PacketManager;
 
 import java.io.DataInputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -20,11 +21,10 @@ public class ClientHandle extends Thread {
 
     ClientHandle(Socket client) {
         this.client = client;
-        //start();
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         while (true) {
             try {
                 ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
@@ -41,8 +41,9 @@ public class ClientHandle extends Thread {
                         e.printStackTrace();
                     }
                 }
-            }catch (Exception e){
+            } catch (SocketException | EOFException e) {
                 e.printStackTrace();
+                ServerLoader.handlers.remove(client);
                 try {
                     client.close();
                 } catch (IOException e1) {
@@ -52,36 +53,11 @@ public class ClientHandle extends Thread {
                 currentThread().interrupt();
                 return;
 
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
-
-/*    private boolean readData() {
-        try {
-            ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
-            if (ois.available() > 0) {
-                short id = ois.readShort();
-                OPacket packet = PacketManager.getPacket(id);
-                packet.setSocket(client);
-                packet.read(ois);
-                packet.handle();
-            } else {
-                return false;
-            }
-        }catch (SocketException e){
-            try {
-                client.close();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-            System.out.println(user.getNickname() + " interrupted");
-            currentThread().interrupt();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return true;
-    }*/
 
     public void invalidate() {
         ServerLoader.invalidate(client);

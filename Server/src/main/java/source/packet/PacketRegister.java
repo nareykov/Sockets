@@ -49,7 +49,7 @@ public class PacketRegister extends OPacket {
         ServerLoader.getHandle(socket).setUser(user);
         db.connectToDataBase();
         if (!db.isRegistered(user.getNickname())) {
-            db.insertIntoUsers(user.getNickname(), user.getPassword());
+            db.insertIntoUsers(user.getNickname(), user.getPassword(), user.getPriority());
             System.out.println("Success");
             answer = "Success";
         } else {
