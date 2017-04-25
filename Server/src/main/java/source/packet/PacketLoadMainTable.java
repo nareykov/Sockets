@@ -46,7 +46,6 @@ public class PacketLoadMainTable extends OPacket {
         db.connectToDataBase();
         model = new DatabaseTableModel();
         try {
-            db.insertIntoFileBase("fadg", "efrg", "eqefgw");
             model.setDataSource(db.getFileBaseResultSet());
         } catch (SQLException e) {
             e.printStackTrace();

@@ -3,6 +3,7 @@ package source;
 import source.packet.OPacket;
 
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -21,8 +22,10 @@ public class ServerLoader {
     public static Map<Socket, ClientHandle> handlers = new HashMap<>();
     private static String adminName = "admin";
     private static String adminPass = "admin";
+    private static File root = new File("Archives");
 
     public static void main(String[] args) {
+        root.mkdir();
         start();
         handle();
         end();
@@ -103,5 +106,9 @@ public class ServerLoader {
 
     public static String getAdminPass() {
         return adminPass;
+    }
+
+    public static File getRoot() {
+        return root;
     }
 }

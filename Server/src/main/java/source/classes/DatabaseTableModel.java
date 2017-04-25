@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Created by narey on 24.04.2017.
+ * Created by narey on 25.04.2017.
  */
-public class AdminTableModel extends AbstractTableModel implements Serializable {
+public class DatabaseTableModel extends AbstractTableModel implements Serializable {
     private static final long serialVersionUID = 1L;
     private ArrayList<String> columnNames = new ArrayList<String>();
     private ArrayList<Class> columnTypes = new ArrayList<Class>();

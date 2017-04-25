@@ -98,8 +98,7 @@ public class DataBase {
             stmt = c.createStatement();
             String sql = "CREATE TABLE FileBase " +
                     "(id       TEXT                NOT NULL," +
-                    " Name     TEXT                NOT NULL," +
-                    " Path     TEXT                NOT NULL)";
+                    " Name     TEXT                NOT NULL)";
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
@@ -145,13 +144,13 @@ public class DataBase {
 
     /**
      * Запись в таблицу файлов имени файла и полного пути
-     * @param path Полный путь
-     */
-    public void insertIntoFileBase(String id, String name, String path) {
+     * */
+
+    public void insertIntoFileBase(int id, String name) {
         try {
             stmt = c.createStatement();
-            String sql = "INSERT INTO FileBase (id, Name, Path) " +
-                    "VALUES ('" + id + "', '" + name + "', '" + path + "');";
+            String sql = "INSERT INTO FileBase (id, Name) " +
+                    "VALUES ('" + Integer.toString(id) + "', '" + name + "');";
             stmt.executeUpdate(sql);
 
             stmt.close();

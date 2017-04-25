@@ -1,6 +1,5 @@
 package source.packet;
 
-import source.classes.AdminTableModel;
 import source.classes.DatabaseTableModel;
 import source.gui.Main;
 
@@ -11,10 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 
 /**
  * Created by narey on 24.04.2017.

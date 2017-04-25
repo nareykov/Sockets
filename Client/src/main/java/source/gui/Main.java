@@ -20,6 +20,7 @@ public class Main {
     private static RegisterWindow registerWindow;
     private static AdminWindow adminWindow;
     private static MainWindow mainWindow;
+    private static CreateCaseWindow createCaseWindow;
 
     private static Socket socket;
 
@@ -117,5 +118,13 @@ public class Main {
 
     public static void setMainWindow(MainWindow mainWindow) {
         Main.mainWindow = mainWindow;
+    }
+
+    public static CreateCaseWindow getCreateCaseWindow() {
+        return createCaseWindow;
+    }
+
+    public static void setCreateCaseWindow(CreateCaseWindow createCaseWindow) {
+        Main.createCaseWindow = createCaseWindow;
     }
 }

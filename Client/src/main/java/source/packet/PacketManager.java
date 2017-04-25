@@ -16,6 +16,8 @@ public class PacketManager {
         packets.put((short) 3, PacketLoadAdminTable.class);
         packets.put((short) 4, PacketChangePriority.class);
         packets.put((short) 5, PacketLoadMainTable.class);
+        packets.put((short) 6, PacketCreateCase.class);
+        packets.put((short) 7, PacketOpenCase.class);
         //..........
         //..........
     }

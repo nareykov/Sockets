@@ -37,6 +37,12 @@ public class MainWindow {
 
         JButton caseBtn = new JButton(new ImageIcon(caseImg.getImage().getScaledInstance(30, 30, caseImg.getImage().SCALE_DEFAULT)));
         caseBtn.setBorderPainted(false);
+        caseBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.setCreateCaseWindow(new CreateCaseWindow());
+            }
+        });
         toolBar.add(caseBtn);
         JButton delBtn = new JButton(new ImageIcon(delImg.getImage().getScaledInstance(30, 30, delImg.getImage().SCALE_DEFAULT)));
         delBtn.setBorderPainted(false);
@@ -66,5 +72,13 @@ public class MainWindow {
 
     public JTable getTable() {
         return table;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

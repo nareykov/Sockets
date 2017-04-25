@@ -4,6 +4,8 @@ import source.classes.DatabaseTableModel;
 import source.gui.Main;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -44,7 +46,17 @@ public class PacketLoadMainTable extends OPacket {
 
     @Override
     public void handle() {
-        JTable table = Main.getMainWindow().getTable();
+        final JTable table = Main.getMainWindow().getTable();
         table.setModel(model);
+        table.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                    int index = table.getSelectionModel().getLeadSelectionIndex();
+                    String id = (String) table.getModel().getValueAt(index, 0);
+                    System.out.println("id: " + id);
+                    Main.sendPacket(new PacketOpenCase(Integer.parseInt(id)));
+            }
+        });
     }
 }
