@@ -1,6 +1,7 @@
 package source.gui;
 
 import source.classes.Case;
+import source.packet.PacketChangeCase;
 import source.packet.PacketCreateCase;
 
 import javax.swing.*;
@@ -15,7 +16,6 @@ public class CreateCaseWindow {
     public CreateCaseWindow() {
         final JFrame frame = new JFrame("Case");
         frame.setSize(250, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(500,250);
         frame.setResizable(false);
 
@@ -142,7 +142,6 @@ public class CreateCaseWindow {
     public CreateCaseWindow(Case openCase){
         final JFrame frame = new JFrame("Case");
         frame.setSize(250, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(500,250);
         frame.setResizable(false);
 
@@ -177,8 +176,10 @@ public class CreateCaseWindow {
             public void actionPerformed(ActionEvent e) {
                 if (!(surname.getText().equals("") || name.getText().equals("")
                         || patronymic.getText().equals("") || phone.getText().equals("") || job.getText().equals(""))) {
-                    Main.sendPacket(new PacketCreateCase(new Case(surname.getText(), name.getText(), patronymic.getText(),
-                            phone.getText(), job.getText())));
+                    JTable table = Main.getMainWindow().getTable();
+                    int index = table.getSelectionModel().getLeadSelectionIndex();
+                    String id = (String) table.getModel().getValueAt(index, 0);
+                    Main.sendPacket(new PacketChangeCase(Integer.parseInt(id), new Case(surname.getText(), name.getText(), patronymic.getText(), phone.getText(), job.getText())));
                 } else {
                     errorLbl.setText("Empty field");
                 }

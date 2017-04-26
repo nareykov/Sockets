@@ -212,6 +212,19 @@ public class DataBase {
         }
     }
 
+    public void changeName(int id, String newName) {
+        try {
+            stmt = c.createStatement();
+
+            String sql = "UPDATE FileBase SET Name = '" + newName + "' WHERE id = '" + Integer.toString(id) + "';";
+            stmt.executeUpdate(sql);
+            stmt.close();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+    }
+
     public void changePriority(String username, int priority) {
         try {
             stmt = c.createStatement();

@@ -52,7 +52,6 @@ public class PacketLoadMainTable extends OPacket {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        ServerLoader.sendPacket(socket, new PacketLoadMainTable(model));
         db.closeDataBase();
     }
 }

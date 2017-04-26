@@ -79,6 +79,5 @@ public class PacketCreateCase extends OPacket {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        ServerLoader.sendPacket(socket, new PacketCreateCase());
     }
 }

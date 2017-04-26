@@ -50,7 +50,6 @@ public class PacketEnter extends OPacket {
 
     @Override
     public void handle() {
-        ServerLoader.getHandle(socket).setUser(user);
         if (user.getNickname().equals(ServerLoader.getAdminName()) && user.getPassword().equals(ServerLoader.getAdminPass())) {
             answer = "Admin";
             priority = 2;
@@ -65,6 +64,5 @@ public class PacketEnter extends OPacket {
             }
             db.closeDataBase();
         }
-        ServerLoader.sendPacket(socket, new PacketEnter());
     }
 }

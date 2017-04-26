@@ -31,18 +31,6 @@ public class ServerLoader {
         end();
     }
 
-    public synchronized static void sendPacket(Socket receiver, OPacket packet) {
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(receiver.getOutputStream());
-            oos.writeShort(packet.getId());
-            packet.write(oos);
-            oos.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     private static void start() {
         try {
             server = new ServerSocket(8888);

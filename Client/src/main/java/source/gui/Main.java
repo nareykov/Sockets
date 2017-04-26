@@ -4,12 +4,10 @@ import source.packet.OPacket;
 import source.packet.PacketManager;
 
 import javax.swing.*;
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.SocketException;
 
 /**
  * Created by narey on 11.04.2017.
@@ -23,6 +21,8 @@ public class Main {
     private static CreateCaseWindow createCaseWindow;
 
     private static Socket socket;
+    private static ObjectOutputStream oos;
+    private static ObjectInputStream ois;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -36,7 +36,6 @@ public class Main {
     private synchronized static void waitServer() {
         while (true) {
             try {
-                ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
                 if (ois.available() <= 0) {
                     try {
                         Thread.sleep(10);
@@ -60,6 +59,8 @@ public class Main {
     public static void end() {
         try {
             System.out.println("KEKEKEKEKEK");
+            oos.close();
+            ois.close();
             socket.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,6 +71,8 @@ public class Main {
     private static void connect() {
         try {
             socket = new Socket("localhost", 8888);
+            oos = new ObjectOutputStream(socket.getOutputStream());
+            ois = new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,7 +80,6 @@ public class Main {
 
     public synchronized static void sendPacket(OPacket packet) {
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             oos.writeShort(packet.getId());
             packet.write(oos);
             oos.flush();

@@ -48,7 +48,6 @@ public class PacketChangePriority extends OPacket {
         db.connectToDataBase();
         db.changePriority(username, priority);
         db.closeDataBase();
-        ServerLoader.sendPacket(socket, new PacketChangePriority());
     }
 }
 

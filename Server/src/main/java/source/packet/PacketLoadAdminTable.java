@@ -53,7 +53,6 @@ public class PacketLoadAdminTable extends OPacket {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        ServerLoader.sendPacket(socket, new PacketLoadAdminTable(model));
         db.closeDataBase();
     }
 }

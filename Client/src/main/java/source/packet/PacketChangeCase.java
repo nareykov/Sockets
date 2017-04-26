@@ -1,6 +1,5 @@
 package source.packet;
 
-import source.ServerLoader;
 import source.classes.Case;
 import source.classes.DOMParser;
 
@@ -10,38 +9,43 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 25.04.2017.
+ * Created by narey on 26.04.2017.
  */
-public class PacketOpenCase extends OPacket {
+public class PacketChangeCase extends OPacket {
 
-    private Case openCase;
-    private int id;
+    int id;
+    File file;
+    String name;
 
-    public PacketOpenCase() {
+    public PacketChangeCase() {
 
     }
 
-    public PacketOpenCase(Case openCase) {
-        this.openCase = openCase;
+    public PacketChangeCase(int id, Case newCase) {
+        this.id = id;
+        name = newCase.getSurname() + " " + newCase.getName();
+        file = DOMParser.writeXML(newCase);
     }
 
     @Override
     public short getId() {
-        return 7;
+        return 8;
     }
 
     @Override
     public void write(ObjectOutputStream oos) throws IOException {
-        oos.writeObject(openCase);
+        oos.writeObject(file);
+        oos.writeUTF(name);
+        oos.writeInt(id);
     }
 
     @Override
     public void read(ObjectInputStream ois) throws IOException {
-        id = ois.readInt();
+
     }
 
     @Override
     public void handle() {
-        openCase = DOMParser.readXML(new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml"));
+
     }
 }

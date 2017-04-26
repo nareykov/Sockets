@@ -8,16 +8,6 @@ import java.net.Socket;
  */
 public abstract class OPacket {
 
-    public Socket socket;
-
-    public Socket getSocket() {
-        return socket;
-    }
-
-    public void setSocket(Socket socket) {
-        this.socket = socket;
-    }
-
     public abstract short getId();
 
     public abstract void write(ObjectOutputStream oos) throws IOException;

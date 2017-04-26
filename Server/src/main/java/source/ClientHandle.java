@@ -5,10 +5,7 @@ import source.classes.User;
 import source.packet.OPacket;
 import source.packet.PacketManager;
 
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
 
@@ -18,22 +15,25 @@ import java.net.SocketException;
 public class ClientHandle extends Thread {
     private final Socket client;
     private User user = new User("Noname", "Noname");
+    private ObjectInputStream ois;
+    private ObjectOutputStream oos;
 
-    ClientHandle(Socket client) {
+    ClientHandle(Socket client) throws IOException {
         this.client = client;
+        ois = new ObjectInputStream(client.getInputStream());
+        oos = new ObjectOutputStream(client.getOutputStream());
     }
 
     @Override
     public synchronized void run() {
         while (true) {
             try {
-                ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
                 if (ois.available() > 0) {
                     short id = ois.readShort();
                     OPacket packet = PacketManager.getPacket(id);
-                    packet.setSocket(client);
                     packet.read(ois);
                     packet.handle();
+                    sendPacket(packet);
                 } else {
                     try {
                         Thread.sleep(10);
@@ -45,6 +45,8 @@ public class ClientHandle extends Thread {
                 e.printStackTrace();
                 ServerLoader.handlers.remove(client);
                 try {
+                    oos.close();
+                    ois.close();
                     client.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
@@ -57,6 +59,18 @@ public class ClientHandle extends Thread {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public synchronized void sendPacket(OPacket packet) {
+        try {
+            oos.writeShort(packet.getId());
+            packet.write(oos);
+            oos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void invalidate() {

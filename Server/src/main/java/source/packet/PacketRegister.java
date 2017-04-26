@@ -46,7 +46,6 @@ public class PacketRegister extends OPacket {
 
     @Override
     public void handle() {
-        ServerLoader.getHandle(socket).setUser(user);
         db.connectToDataBase();
         if (!db.isRegistered(user.getNickname())) {
             db.insertIntoUsers(user.getNickname(), user.getPassword(), user.getPriority());
@@ -57,6 +56,5 @@ public class PacketRegister extends OPacket {
             answer = "User is registered";
         }
         db.closeDataBase();
-        ServerLoader.sendPacket(socket, new PacketRegister());
     }
 }
