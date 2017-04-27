@@ -4,10 +4,9 @@ import source.DataBase;
 import source.ServerLoader;
 import source.classes.DatabaseTableModel;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 /**
  * Created by narey on 24.04.2017.
@@ -19,12 +18,10 @@ public class PacketLoadAdminTable extends OPacket {
 
     DataBase db = new DataBase();
 
-    PacketLoadAdminTable() {
+    private int typeOfParser;
 
-    }
+    public PacketLoadAdminTable() {
 
-    PacketLoadAdminTable(DatabaseTableModel model) {
-        this.model = model;
     }
 
     @Override
@@ -35,6 +32,7 @@ public class PacketLoadAdminTable extends OPacket {
     @Override
     public void write(ObjectOutputStream oos) throws IOException {
         oos.writeObject(model);
+        oos.writeInt(typeOfParser);
     }
 
     @Override
@@ -54,5 +52,14 @@ public class PacketLoadAdminTable extends OPacket {
             e.printStackTrace();
         }
         db.closeDataBase();
+
+        File typeParserFile = new File("typeParserFile");
+        try {
+            Scanner scanner = new Scanner(typeParserFile);
+            typeOfParser = scanner.nextInt();
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

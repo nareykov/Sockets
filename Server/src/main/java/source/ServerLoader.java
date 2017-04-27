@@ -1,11 +1,9 @@
 package source;
 
+import source.classes.ZIP;
 import source.packet.OPacket;
 
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -25,13 +23,39 @@ public class ServerLoader {
     private static File root = new File("Archives");
 
     public static void main(String[] args) {
-        root.mkdir();
+
         start();
         handle();
         end();
     }
 
     private static void start() {
+        root.mkdir();
+
+        File idFile = new File("idFile");
+        if (!idFile.exists()) {
+            try {
+                idFile.createNewFile();
+                PrintWriter out = new PrintWriter(idFile.getAbsoluteFile());
+                out.print(0);
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        File typeParserFile = new File("typeParserFile");
+        if (!typeParserFile.exists()) {
+            try {
+                typeParserFile.createNewFile();
+                PrintWriter out = new PrintWriter(typeParserFile.getAbsoluteFile());
+                out.print(2);
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         try {
             server = new ServerSocket(8888);
         } catch (IOException e)

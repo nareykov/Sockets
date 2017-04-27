@@ -45,24 +45,14 @@ public class PacketCreateCase extends OPacket {
     @Override
     public void handle() {
         File idFile = new File("idFile");
-        if (idFile.exists()) {
-            try {
-                Scanner scanner = new Scanner(idFile);
-                id = scanner.nextInt();
-                scanner.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                idFile.createNewFile();
-                PrintWriter out = new PrintWriter(idFile.getAbsoluteFile());
-                out.print(1);
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            Scanner scanner = new Scanner(idFile);
+            id = scanner.nextInt();
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+
         try {
             db.connectToDataBase();
             db.insertIntoFileBase(id, name);

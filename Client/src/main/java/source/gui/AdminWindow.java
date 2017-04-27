@@ -1,5 +1,7 @@
 package source.gui;
 
+import source.packet.PacketChangeParser;
+import source.packet.PacketChangePriority;
 import source.packet.PacketLoadAdminTable;
 
 import javax.swing.*;
@@ -16,10 +18,11 @@ import java.util.Vector;
 public class AdminWindow {
 
     private JTable table = new JTable(3, 3);
+    private JComboBox comboBox;
 
     AdminWindow() {
         final JFrame frame = new JFrame("Admin");
-        frame.setSize(515, 470);
+        frame.setSize(515, 500);
         frame.addWindowListener(new MyWindowListener());
         frame.setLocation(400,100);
         frame.setResizable(false);
@@ -47,6 +50,28 @@ public class AdminWindow {
         frame.add(toolBar);
         frame.add(scrollPane);
 
+        frame.add(new JLabel("Type of parser:"));
+
+        comboBox = new JComboBox();
+        comboBox.addItem("DOM");
+        comboBox.addItem("SAX");
+        comboBox.addItem("StAX");
+        comboBox.addItem("JDOM");
+        comboBox.addActionListener(new ActionListener() {
+            private int count = 1;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (count % 2 != 0) {
+                    count++;
+                    return;
+                }
+                JComboBox cb = (JComboBox)e.getSource();
+                Main.sendPacket(new PacketChangeParser(cb.getSelectedIndex()));
+                count++;
+            }
+        });
+        frame.add(comboBox);
+
         frame.setVisible(true);
     }
 
@@ -56,5 +81,13 @@ public class AdminWindow {
 
     public void setTable(JTable table) {
         this.table = table;
+    }
+
+    public JComboBox getComboBox() {
+        return comboBox;
+    }
+
+    public void setComboBox(JComboBox comboBox) {
+        this.comboBox = comboBox;
     }
 }

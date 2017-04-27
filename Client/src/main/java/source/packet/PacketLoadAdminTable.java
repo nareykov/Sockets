@@ -16,14 +16,11 @@ import java.io.ObjectOutputStream;
  */
 public class PacketLoadAdminTable extends OPacket{
 
-    DatabaseTableModel model;
+    private DatabaseTableModel model;
+    private int typeOfParser;
 
     public PacketLoadAdminTable() {
 
-    }
-
-    PacketLoadAdminTable(DatabaseTableModel model) {
-        this.model = model;
     }
 
     @Override
@@ -43,6 +40,8 @@ public class PacketLoadAdminTable extends OPacket{
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        typeOfParser = ois.readInt();
     }
 
     @Override
@@ -73,5 +72,7 @@ public class PacketLoadAdminTable extends OPacket{
             }
         });
         table.removeColumn(table.getColumnModel().getColumn(1));
+
+        Main.getAdminWindow().getComboBox().setSelectedIndex(typeOfParser);
     }
 }

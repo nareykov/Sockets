@@ -6,7 +6,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Created by narey on 27.04.2017.
@@ -53,6 +55,15 @@ public class Parser {
     }
 
     public static int getTypeOfParser(){
-        return 3;
+        File typeParserFile = new File("typeParserFile");
+        int typeOfParser = -1;
+        try {
+            Scanner scanner = new Scanner(typeParserFile);
+            typeOfParser = scanner.nextInt();
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return typeOfParser;
     }
 }
