@@ -4,6 +4,7 @@ import source.DataBase;
 import source.ServerLoader;
 import source.classes.Case;
 import source.classes.DOMParser;
+import source.classes.ZIP;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,12 +53,7 @@ public class PacketChangeCase extends OPacket {
         db.connectToDataBase();
         db.changeName(id, name);
         db.closeDataBase();
-        new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml").delete(); //удаляем старый))))
-        file.renameTo(new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml"));
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".zip").delete(); //удаляем старый))))
+        ZIP.toZIP(file, ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".zip");
     }
 }

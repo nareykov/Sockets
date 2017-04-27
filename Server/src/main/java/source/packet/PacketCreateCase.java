@@ -2,6 +2,7 @@ package source.packet;
 
 import source.DataBase;
 import source.ServerLoader;
+import source.classes.ZIP;
 
 import java.io.*;
 import java.util.Scanner;
@@ -53,14 +54,12 @@ public class PacketCreateCase extends OPacket {
             e.printStackTrace();
         }
 
-        try {
-            db.connectToDataBase();
-            db.insertIntoFileBase(id, name);
-            file.renameTo(new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml"));
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        db.connectToDataBase();
+        db.insertIntoFileBase(id, name);
+        db.closeDataBase();
+        ZIP.toZIP(file, ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".zip");
+
         id++;
         try {
             PrintWriter out = new PrintWriter(idFile.getAbsoluteFile());
