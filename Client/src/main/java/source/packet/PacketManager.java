@@ -19,6 +19,7 @@ public class PacketManager {
         packets.put((short) 6, PacketCreateCase.class);
         packets.put((short) 7, PacketOpenCase.class);
         packets.put((short) 8, PacketChangeCase.class);
+        packets.put((short) 9, PacketDeleteCase.class);
         //..........
         //..........
     }

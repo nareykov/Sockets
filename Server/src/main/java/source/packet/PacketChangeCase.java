@@ -51,6 +51,7 @@ public class PacketChangeCase extends OPacket {
     public void handle() {
         db.connectToDataBase();
         db.changeName(id, name);
+        db.closeDataBase();
         new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml").delete(); //удаляем старый))))
         file.renameTo(new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml"));
         try {

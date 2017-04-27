@@ -3,6 +3,7 @@ package source.gui;
 import source.classes.Case;
 import source.packet.PacketChangeCase;
 import source.packet.PacketCreateCase;
+import source.packet.PacketLoadMainTable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +29,7 @@ public class CreateCaseWindow {
         JLabel patronymicLbl = new JLabel("Patronymic:");
         JLabel phoneLbl = new JLabel("Phone:");
         JLabel jobLbl = new JLabel("Job:");
-        final JLabel errorLbl = new JLabel("(Error message)");
+        final JLabel errorLbl = new JLabel("");
 
         Dimension dimensionText = new Dimension(100,25);
         final JTextField surname = new JTextField();
@@ -52,22 +53,16 @@ public class CreateCaseWindow {
                 || patronymic.getText().equals("") || phone.getText().equals("") || job.getText().equals(""))) {
                     Main.sendPacket(new PacketCreateCase(new Case(surname.getText(), name.getText(), patronymic.getText(),
                             phone.getText(), job.getText())));
-                    /*if (answer.equals("Admin")) {
-                        Main.setAdminWindow(new AdminWindow());
-                        Main.sendPacket(new PacketLoadAdminTable());
-                        frame.dispose();
-                    } else if (answer.equals("Success")) {
-                        Main.setMainWindow(new MainWindow(priority));
-                        Main.sendPacket(new PacketLoadMainTable());
-                        frame.dispose();
-                    } else {
-                        errorLbl.setText(answer);
-                    }*/
+                    frame.dispose();
+                    Main.sendPacket(new PacketLoadMainTable());
                 } else {
                     errorLbl.setText("Empty field");
                 }
             }
         });
+        if (Main.getMainWindow().getPriority() < 1) {
+            saveBtn.setVisible(false);
+        }
 
         cons.weightx = 1.0;
 
@@ -154,7 +149,7 @@ public class CreateCaseWindow {
         JLabel patronymicLbl = new JLabel("Patronymic:");
         JLabel phoneLbl = new JLabel("Phone:");
         JLabel jobLbl = new JLabel("Job:");
-        final JLabel errorLbl = new JLabel("(Error message)");
+        final JLabel errorLbl = new JLabel("");
 
         Dimension dimensionText = new Dimension(100,25);
         final JTextField surname = new JTextField(openCase.getSurname());
@@ -180,6 +175,8 @@ public class CreateCaseWindow {
                     int index = table.getSelectionModel().getLeadSelectionIndex();
                     String id = (String) table.getModel().getValueAt(index, 0);
                     Main.sendPacket(new PacketChangeCase(Integer.parseInt(id), new Case(surname.getText(), name.getText(), patronymic.getText(), phone.getText(), job.getText())));
+                    frame.dispose();
+                    Main.sendPacket(new PacketLoadMainTable());
                 } else {
                     errorLbl.setText("Empty field");
                 }

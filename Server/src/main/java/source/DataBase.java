@@ -274,22 +274,17 @@ public class DataBase {
         }
     }
 
-
-    /**
-     * Удаляет из базы данных файл/папку
-     * @param path путь
-     */
-    /*public void removeFromFileBase(String path) {
+    public void removeFromFileBase(int id) {
         try {
             stmt = c.createStatement();
 
-            String sql = "DELETE FROM FileBase WHERE Path = '" + path + "';";
+            String sql = "DELETE FROM FileBase WHERE id = '" + Integer.toString(id) + "';";
             stmt.executeUpdate(sql);
 
         } catch ( Exception e ) {
-            log.error("File " + path + " not removed from FileBase");
-            System.out.println("File " + path + " not removed from FileBase");
+            //log.error("File " + path + " not removed from FileBase");
+            //System.out.println("File " + path + " not removed from FileBase");
             return;
         }
-    }*/
+    }
 }

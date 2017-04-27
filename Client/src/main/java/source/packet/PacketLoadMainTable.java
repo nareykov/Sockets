@@ -48,15 +48,5 @@ public class PacketLoadMainTable extends OPacket {
     public void handle() {
         final JTable table = Main.getMainWindow().getTable();
         table.setModel(model);
-        table.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                    int index = table.getSelectionModel().getLeadSelectionIndex();
-                    String id = (String) table.getModel().getValueAt(index, 0);
-                    System.out.println("id: " + id);
-                    Main.sendPacket(new PacketOpenCase(Integer.parseInt(id)));
-            }
-        });
     }
 }

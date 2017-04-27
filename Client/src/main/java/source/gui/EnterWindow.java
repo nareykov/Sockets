@@ -36,7 +36,7 @@ public class EnterWindow {
 
         JLabel usernameLbl = new JLabel("Username:");
         JLabel passwordLbl = new JLabel("Password:");
-        final JLabel errorLbl = new JLabel("(Error message)");
+        final JLabel errorLbl = new JLabel("");
 
         Dimension dimensionText = new Dimension(100,25);
         final JTextField username = new JTextField();

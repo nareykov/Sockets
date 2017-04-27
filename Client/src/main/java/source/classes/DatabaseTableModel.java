@@ -41,7 +41,7 @@ public class DatabaseTableModel extends AbstractTableModel implements Serializab
     }
 
     public boolean isCellEditable(int row, int col) {
-        return true;
+        return columnNames.get(0).equals("Username") && col == 2;
     }
 
     public void setValueAt(Object obj, int row, int col) {
