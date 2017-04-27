@@ -3,6 +3,7 @@ package source.packet;
 import source.ServerLoader;
 import source.classes.Case;
 import source.classes.DOMParser;
+import source.classes.Parser;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,6 +43,6 @@ public class PacketOpenCase extends OPacket {
 
     @Override
     public void handle() {
-        openCase = DOMParser.readXML(new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml"));
+        openCase = Parser.readXML(new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml"));
     }
 }
