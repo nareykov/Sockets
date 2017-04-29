@@ -10,6 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Scanner;
 
 /**
@@ -31,6 +32,7 @@ public class ServerLoader {
      * @param args
      */
     public static void main(String[] args) {
+        System.out.println("Сервер запущен");
         start();
         handle();
         end();
@@ -92,7 +94,6 @@ public class ServerLoader {
         while (true) {
             if (scan.hasNextLine()) {
                 String line = scan.nextLine();
-                System.out.println(line);
                 if (line.equals("/end")) {
                     end();
                 } else {

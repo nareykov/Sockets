@@ -77,8 +77,9 @@ public class Main {
             oos.close();
             ois.close();
             socket.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e.toString());
+            System.exit(0);
         }
         System.exit(0);
     }
@@ -108,8 +109,9 @@ public class Main {
             oos.flush();
             log.info("Отправлен пакет" + packet.getId());
             waitServer();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error(e.toString());
+            JOptionPane.showMessageDialog(null, "Сервер недоступен");
         }
     }
 

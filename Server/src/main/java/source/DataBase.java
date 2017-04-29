@@ -164,7 +164,7 @@ public class DataBase {
      * @return true - верный логин и пароль, false - неверные логин или пароль
      */
     public boolean enter(String username, String pass) {
-        log.error(username + " enter");
+        log.info(username + " enter");
         try {
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery( "SELECT * FROM Users WHERE Username = '" + username + "';" );
