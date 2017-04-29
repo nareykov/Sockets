@@ -7,7 +7,7 @@ import source.classes.User;
 import java.io.*;
 
 /**
- * Created by narey on 20.04.2017.
+ * Сообщение о регистрации нового пользователя
  */
 public class PacketRegister extends OPacket {
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by narey on 23.03.2017.
+ * Класс хранящий классы сообщений и соответствующие им айди
  */
 public class PacketManager {
 
@@ -25,7 +25,11 @@ public class PacketManager {
         //..........
     }
 
-
+    /**
+     * Получает класс сообщения по айди
+     * @param id айди класса сообщения
+     * @return класс сообщения
+     */
     public static OPacket getPacket(short id) {
         try {
             return packets.get(id).newInstance();

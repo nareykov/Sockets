@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 
 /**
- * Created by narey on 12.04.2017.
+ * Окно админа
  */
 public class AdminWindow {
 

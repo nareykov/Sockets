@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 27.04.2017.
+ * Сообщение об удалении архива
  */
 public class PacketDeleteCase extends OPacket {
 

@@ -12,7 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 24.04.2017.
+ * Сообщение загрузки содержания таблицы админа
  */
 public class PacketLoadAdminTable extends OPacket{
 

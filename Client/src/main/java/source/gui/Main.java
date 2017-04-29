@@ -1,5 +1,6 @@
 package source.gui;
 
+import org.apache.log4j.Logger;
 import source.packet.OPacket;
 import source.packet.PacketManager;
 
@@ -10,7 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
- * Created by narey on 11.04.2017.
+ * Главный класс юзера
  */
 public class Main {
 
@@ -24,6 +25,12 @@ public class Main {
     private static ObjectOutputStream oos;
     private static ObjectInputStream ois;
 
+    private static final Logger log = Logger.getLogger(Main.class);
+
+    /**
+     * Поключается к серверу и открывает окнот входа
+     * @param args
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -33,7 +40,11 @@ public class Main {
         });
     }
 
+    /**
+     * Ожиданет ответ сервера и обрабатывает его
+     */
     private synchronized static void waitServer() {
+        log.info("Ожидание ответа сервера");
         while (true) {
             try {
                 if (ois.available() <= 0) {
@@ -48,42 +59,54 @@ public class Main {
                 OPacket packet = PacketManager.getPacket(id);
                 packet.read(ois);
                 packet.handle();
+                log.info("Получен пакет: " + id);
                 break;
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error(e.toString());
                 end();
             }
         }
     }
 
+    /**
+     * Отключает клиента от сервера
+     */
     public static void end() {
         try {
-            System.out.println("KEKEKEKEKEK");
+            log.info("Отключение");
             oos.close();
             ois.close();
             socket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
         System.exit(0);
     }
 
+    /**
+     * Подключает клиента к серверу
+     */
     private static void connect() {
+        log.info("Подключение");
         try {
             socket = new Socket("localhost", 8888);
             oos = new ObjectOutputStream(socket.getOutputStream());
             ois = new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
     }
 
+    /**
+     * Отправляет пакет серверу и ожидает ответ
+     * @param packet
+     */
     public synchronized static void sendPacket(OPacket packet) {
         try {
             oos.writeShort(packet.getId());
             packet.write(oos);
             oos.flush();
-            System.out.println("Отправлен пакет" + packet.getId());
+            log.info("Отправлен пакет" + packet.getId());
             waitServer();
         } catch (IOException e) {
             e.printStackTrace();

@@ -14,7 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * Created by narey on 12.04.2017.
+ * Главное окно юзера
  */
 public class MainWindow {
 
@@ -24,11 +24,10 @@ public class MainWindow {
 
     MainWindow(int priority) {
         this.priority = priority;
-        System.out.println("Priority: " + priority);
 
         final JFrame frame = new JFrame("Main");
         frame.setSize(515, 470);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.addWindowListener(new MyWindowListener());
         frame.setLocation(400,100);
         frame.setResizable(false);
 

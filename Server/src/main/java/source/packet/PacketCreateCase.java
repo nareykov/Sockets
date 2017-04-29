@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.Scanner;
 
 /**
- * Created by narey on 25.04.2017.
+ * Сообщение о создании нового архива
  */
 public class PacketCreateCase extends OPacket {
 

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
- * Created by narey on 24.04.2017.
+ * Сообщение загрузки содержания таблицы админа
  */
 public class PacketLoadAdminTable extends OPacket {
 

@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 22.04.2017.
+ * Сообщение входа юзера
  */
 public class PacketEnter extends OPacket {
 
@@ -50,6 +50,7 @@ public class PacketEnter extends OPacket {
 
     @Override
     public void handle() {
+
         if (user.getNickname().equals(ServerLoader.getAdminName()) && user.getPassword().equals(ServerLoader.getAdminPass())) {
             answer = "Admin";
             priority = 2;

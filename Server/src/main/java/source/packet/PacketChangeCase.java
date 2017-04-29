@@ -14,7 +14,7 @@ import java.io.ObjectOutputStream;
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 /**
- * Created by narey on 26.04.2017.
+ * Сообщение о изменении архива
  */
 public class PacketChangeCase extends OPacket {
 

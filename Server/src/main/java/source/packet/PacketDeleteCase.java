@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 27.04.2017.
+ * Сообщение об удалении архива
  */
 public class PacketDeleteCase extends OPacket {
 
@@ -40,7 +40,7 @@ public class PacketDeleteCase extends OPacket {
     public void handle() {
         db.connectToDataBase();
         db.removeFromFileBase(id);
-        new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".xml").delete();
+        new File(ServerLoader.getRoot().getAbsolutePath()+ "\\" + id + ".zip").delete();
         db.closeDataBase();
     }
 }

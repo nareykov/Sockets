@@ -3,21 +3,31 @@ package source.classes;
 /**
  * Created by narey on 27.04.2017.
  */
+import org.apache.log4j.Logger;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.*;
 
+/**
+ * SAX парсер
+ */
 public class SAXPars extends DefaultHandler{
 
     Case newCase = new Case();
     String thisElement = "";
 
+    private static final Logger log = Logger.getLogger(SAXPars.class);
+
+    /**
+     * Возвращает архив сгенерированный из xml файла
+     * @return архив
+     */
     public Case getResult(){
         return newCase;
     }
 
     @Override
     public void startDocument() throws SAXException {
-        System.out.println("Start parse XML...");
+        log.info("Чтение xml файла (SAX)");
     }
 
     @Override
@@ -51,6 +61,6 @@ public class SAXPars extends DefaultHandler{
 
     @Override
     public void endDocument() {
-        System.out.println("Stop parse XML...");
+
     }
 }

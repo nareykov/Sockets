@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 26.04.2017.
+ * Сообщение о изменении архива
  */
 public class PacketChangeCase extends OPacket {
 

@@ -3,7 +3,7 @@ package source.classes;
 import java.io.Serializable;
 
 /**
- * Created by narey on 20.04.2017.
+ * Класс, объекты которого представляют собой юзера
  */
 public class User implements Serializable{
     private int priority = 0;

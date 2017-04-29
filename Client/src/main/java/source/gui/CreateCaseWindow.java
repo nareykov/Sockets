@@ -11,9 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by narey on 11.04.2017.
+ * Окно создания архива
  */
 public class CreateCaseWindow {
+
+    /**
+     * При создании нового архива
+     */
     public CreateCaseWindow() {
         final JFrame frame = new JFrame("Case");
         frame.setSize(250, 300);
@@ -134,6 +138,9 @@ public class CreateCaseWindow {
         frame.setVisible(true);
     }
 
+    /**
+     * При изменении или просмотре архива
+     */
     public CreateCaseWindow(Case openCase){
         final JFrame frame = new JFrame("Case");
         frame.setSize(250, 300);

@@ -1,5 +1,6 @@
 package source.classes;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -14,9 +15,17 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 
 /**
- * Created by narey on 26.04.2017.
+ * Парсер DOM
  */
 public class DOMParser {
+
+    private static final Logger log = Logger.getLogger(DOMParser.class);
+
+    /**
+     * Функция записывает архив в xml файл
+     * @param newCase объект архива
+     * @return созданный xml файл
+     */
     public static File writeXML(Case newCase) {
         try
         {
@@ -58,7 +67,7 @@ public class DOMParser {
             StreamResult streamResult = new StreamResult(file);
 
             transformer.transform(domSource, streamResult);
-            System.out.println("Файл сохранен!");
+            log.info("Создан xml файл");
 
             return file;
         }

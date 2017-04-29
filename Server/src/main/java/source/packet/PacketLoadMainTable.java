@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.sql.SQLException;
 
 /**
- * Created by narey on 25.04.2017.
+ * Сообщение загрузки содержания главной таблицы
  */
 public class PacketLoadMainTable extends OPacket {
 

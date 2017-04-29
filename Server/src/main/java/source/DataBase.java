@@ -1,19 +1,19 @@
 package source;
 
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.sql.*;
 
 /**
- * Created by narey on 20.04.2017.
+ * Класс с методамидля работы с базой данных
  */
 public class DataBase {
     private Connection c = null;
 
     private Statement stmt = null;
 
-    private final String salt = "eshgfure";
-
-    //private static final Logger log = Logger.getLogger(DataBase.class);
+    private static final Logger log = Logger.getLogger(DataBase.class);
 
     /** Устанавливает соединение с базой данных.
      * Перед подключением к базе данных производим проверку на её существование.
@@ -22,8 +22,7 @@ public class DataBase {
     public void connectToDataBase() {
         if(!new File("database.db").exists()){
             if (!this.restoreDataBase()) {
-                //log.error("Tables not created");
-                System.out.println("Tables not created");
+                log.error("Tables not created");
             }
         } else {
             this.openDataBase();
@@ -43,8 +42,7 @@ public class DataBase {
                 return true;
             }
         } else {
-            //log.error("Restore database failed");
-            System.out.println("Restore database failed");
+            log.error("Restore database failed");
             return false;
         }
     }
@@ -61,8 +59,7 @@ public class DataBase {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             return false;
         }
-        //log.info("Opened database successfully");
-        System.out.println("Opened database successfully");
+        log.info("Opened database successfully");
         return true;
     }
 
@@ -80,12 +77,10 @@ public class DataBase {
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
-            //log.error(e.getClass().getName() + ": " + e.getMessage());
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            log.error(e.getClass().getName() + ": " + e.getMessage());
             return false;
         }
-        //log.info("Table Users created successfully");
-        System.out.println("Table Users created successfully");
+        log.info("Table Users created successfully");
         return true;
     }
 
@@ -102,12 +97,10 @@ public class DataBase {
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
-            //log.error(e.getClass().getName() + ": " + e.getMessage());
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            log.error(e.getClass().getName() + ": " + e.getMessage());
             return false;
         }
-        //log.info("Table FileBase created successfully");
-        System.out.println("Table FileBase created successfully");
+        log.info("Table FileBase created successfully");
         return true;
     }
 
@@ -118,14 +111,18 @@ public class DataBase {
         try {
             c.close();
         } catch (SQLException e) {
-            //log.error(e.getClass().getName() + ": " + e.getMessage());
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            log.error(e.getClass().getName() + ": " + e.getMessage());
             System.exit(e.getErrorCode());
         }
-        //log.info("Database closed successfully");
-        System.out.println("Database closed successfully");
+        log.info("Database closed successfully");
     }
 
+    /**
+     * Записывает в базу данных данных о новом юзере
+     * @param username имя юзера
+     * @param pass пароль
+     * @param priority уровень прав
+     */
     public void insertIntoUsers(String username, String pass, int priority) {
         try {
             stmt = c.createStatement();
@@ -134,18 +131,17 @@ public class DataBase {
             stmt.executeUpdate(sql);
             stmt.close();
         } catch ( Exception e ) {
-            //log.error(e.getClass().getName() + ": " + e.getMessage());
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            log.error(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-        //log.info("Recorded into Users successfully");
-        System.out.println("Recorded into Users successfully");
+        log.info("Recorded into Users successfully");
     }
 
     /**
-     * Запись в таблицу файлов имени файла и полного пути
-     * */
-
+     * Запись в базу данных нового архива
+     * @param id айди архива
+     * @param name имя архива
+     */
     public void insertIntoFileBase(int id, String name) {
         try {
             stmt = c.createStatement();
@@ -155,12 +151,10 @@ public class DataBase {
 
             stmt.close();
         } catch ( Exception e ) {
-            //log.error(e.getClass().getName() + ": " + e.getMessage());
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            log.error(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-        //log.info("Recorded into FileBase successfully");
-        System.out.println("Recorded into FileBase successfully");
+        log.info("Recorded into FileBase successfully");
     }
 
     /**
@@ -170,6 +164,7 @@ public class DataBase {
      * @return true - верный логин и пароль, false - неверные логин или пароль
      */
     public boolean enter(String username, String pass) {
+        log.error(username + " enter");
         try {
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery( "SELECT * FROM Users WHERE Username = '" + username + "';" );
@@ -179,11 +174,16 @@ public class DataBase {
                 return true;
             }
         } catch ( SQLException e ) {
+            log.error(e.toString());
             return false;
         }
         return false;
     }
 
+    /**
+     * Получаем таблицу юзеров из базы данных
+     * @return таблица
+     */
     public ResultSet getUsersResultSet() {
 
         try {
@@ -193,11 +193,15 @@ public class DataBase {
             return rs;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error(e.toString());
             return null;
         }
     }
 
+    /**
+     * Получаем таблицу архивов из базы данных
+     * @return таблица
+     */
     public ResultSet getFileBaseResultSet() {
 
         try {
@@ -207,12 +211,20 @@ public class DataBase {
             return rs;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error(e.toString());
             return null;
         }
     }
 
+    /**
+     * Меняет имя архива
+     * @param id айди архива
+     * @param newName новое имя
+     */
     public void changeName(int id, String newName) {
+
+        log.info("Changing name: id(" + id + ") to " + newName);
+
         try {
             stmt = c.createStatement();
 
@@ -221,11 +233,19 @@ public class DataBase {
             stmt.close();
 
         } catch ( Exception e ) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
     }
 
+    /**
+     * Меняет уровень прав юзера
+     * @param username имя юзера
+     * @param priority новый уровень прав
+     */
     public void changePriority(String username, int priority) {
+
+        log.info("Changing " + username + " priority to " + priority);
+
         try {
             stmt = c.createStatement();
 
@@ -234,7 +254,7 @@ public class DataBase {
             stmt.close();
 
         } catch ( Exception e ) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
     }
 
@@ -254,11 +274,17 @@ public class DataBase {
             rs.close();
             stmt.close();
         } catch ( Exception e ) {
+            log.error(e.toString());
             return false;
         }
         return false;
     }
 
+    /**
+     * Получает уровень прав юзера
+     * @param username имя юзера
+     * @return уровень прав
+     */
     public int getPriority(String username) {
         try {
             stmt = c.createStatement();
@@ -268,12 +294,15 @@ public class DataBase {
             return priority;
 
         } catch ( Exception e ) {
-            //log.error("User not found");
-            //System.out.println("User not found");
+            log.error(e.toString());
             return -1;
         }
     }
 
+    /**
+     * Удаляет архив из базы данных
+     * @param id айди архива
+     */
     public void removeFromFileBase(int id) {
         try {
             stmt = c.createStatement();
@@ -282,8 +311,7 @@ public class DataBase {
             stmt.executeUpdate(sql);
 
         } catch ( Exception e ) {
-            //log.error("File " + path + " not removed from FileBase");
-            //System.out.println("File " + path + " not removed from FileBase");
+            log.error("File " + id + " not removed from FileBase");
             return;
         }
     }

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Created by narey on 25.04.2017.
+ * Класс, описывающий модель для таблиц
  */
 public class DatabaseTableModel extends AbstractTableModel implements Serializable {
     private static final long serialVersionUID = 1L;

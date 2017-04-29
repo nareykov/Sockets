@@ -11,9 +11,15 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * Created by narey on 27.04.2017.
+ * Класс обрабатывающий файлы соответствующим парсером
  */
 public class Parser {
+
+    /**
+     * Считывает архив из xml файла
+     * @param file xml файл
+     * @return архив
+     */
     public static Case readXML(File file) {
         int type = getTypeOfParser();
 
@@ -54,6 +60,10 @@ public class Parser {
         }
     }
 
+    /**
+     * Получает тип парсера, который указал админ
+     * @return тип парсера
+     */
     public static int getTypeOfParser(){
         File typeParserFile = new File("typeParserFile");
         int typeOfParser = -1;

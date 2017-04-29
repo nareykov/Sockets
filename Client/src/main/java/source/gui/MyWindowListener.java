@@ -4,7 +4,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 /**
- * Created by narey on 24.04.2017.
+ * Новый обработчик окна, отключающий клиента, при закрытии окна
  */
 public class MyWindowListener implements WindowListener {
     @Override

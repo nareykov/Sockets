@@ -1,16 +1,21 @@
 package source;
 
+import org.apache.log4j.Logger;
+import source.classes.DOMParser;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
 /**
- * Created by narey on 19.04.2017.
+ * Класс ожидающий подключения нового клиента и создающий для него новый обработчик
  */
 public class ServerHandler extends Thread{
 
     private final ServerSocket server;
+
+    private static final Logger log = Logger.getLogger(ServerHandler.class);
 
     ServerHandler(ServerSocket server) {
         this.server = server;
@@ -21,13 +26,15 @@ public class ServerHandler extends Thread{
         while (true) {
             try {
                 Socket client = server.accept();
+                log.info("Accepted " + client.toString());
                 ClientHandle handle = new ClientHandle(client);
                 handle.start();
                 ServerLoader.handlers.put(client, handle);
             } catch (SocketException e) {
+                log.error(e.toString());
                 return;
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error(e.toString());
             }
 
             try {

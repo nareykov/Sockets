@@ -14,7 +14,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 /**
- * Created by narey on 11.04.2017.
+ * Окно для входа
  */
 public class EnterWindow {
 

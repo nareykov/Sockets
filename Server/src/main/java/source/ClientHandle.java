@@ -1,6 +1,8 @@
 package source;
 
+import org.apache.log4j.Logger;
 import org.omg.CORBA.Object;
+import source.classes.DOMParser;
 import source.classes.User;
 import source.packet.OPacket;
 import source.packet.PacketManager;
@@ -10,13 +12,15 @@ import java.net.Socket;
 import java.net.SocketException;
 
 /**
- * Created by narey on 23.03.2017.
+ * Класс, представляющий собой поток для обработки сообщений одного клиента
  */
 public class ClientHandle extends Thread {
     private final Socket client;
     private User user = new User("Noname", "Noname");
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
+
+    private static final Logger log = Logger.getLogger(ClientHandle.class);
 
     ClientHandle(Socket client) throws IOException {
         this.client = client;
@@ -26,6 +30,9 @@ public class ClientHandle extends Thread {
 
     @Override
     public synchronized void run() {
+
+        log.info("Запуск нового потока - обработчика клиента");
+
         while (true) {
             try {
                 if (ois.available() > 0) {
@@ -42,7 +49,7 @@ public class ClientHandle extends Thread {
                     }
                 }
             } catch (SocketException | EOFException e) {
-                e.printStackTrace();
+                log.error(e.toString());
                 ServerLoader.handlers.remove(client);
                 try {
                     oos.close();
@@ -51,7 +58,7 @@ public class ClientHandle extends Thread {
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-                System.out.println(user.getNickname() + " interrupted");
+                log.info(user.getNickname() + " interrupted");
                 currentThread().interrupt();
                 return;
 
@@ -61,7 +68,10 @@ public class ClientHandle extends Thread {
         }
     }
 
-
+    /**
+     * Отправляет сообщение клиенту
+     * @param packet сообщение
+     */
     public synchronized void sendPacket(OPacket packet) {
         try {
             oos.writeShort(packet.getId());

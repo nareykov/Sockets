@@ -3,7 +3,7 @@ package source.classes;
 import java.io.Serializable;
 
 /**
- * Created by narey on 25.04.2017.
+ * Класс, объекты которого представляют собой архивы
  */
 public class Case implements Serializable{
 

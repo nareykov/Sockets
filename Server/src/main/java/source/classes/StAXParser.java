@@ -1,22 +1,32 @@
 package source.classes;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Iterator;
+import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.Characters;
-import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
+/**
+ * StAX парсер
+ */
 public class StAXParser {
+
+    private static final Logger log = Logger.getLogger(StAXParser.class);
+
+    /**
+     * Считывает архив из xml файла
+     * @param file xml файл
+     * @return архив
+     */
     public static Case readXML(File file) {
+        log.info("Чтение xml файла (StAX)");
 
         Case newCase = new Case();
 

@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 27.04.2017.
+ * Сообщение об изменении типа парсера на сервере
  */
 public class PacketChangeParser extends OPacket {
 

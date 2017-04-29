@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by narey on 24.04.2017.
+ * Сообщение об изменении приоритета юзера
  */
 public class PacketChangePriority extends OPacket {
 

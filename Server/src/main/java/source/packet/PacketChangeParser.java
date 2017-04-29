@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.Scanner;
 
 /**
- * Created by narey on 27.04.2017.
+ * Сообщение об изменении типа парсера на сервере
  */
 public class PacketChangeParser extends OPacket {
 

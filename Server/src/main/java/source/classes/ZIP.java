@@ -1,5 +1,7 @@
 package source.classes;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
@@ -8,10 +10,21 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
- * Created by narey on 28.04.2017.
+ * Класс с методами для ахривации
  */
 public class ZIP {
+
+    private static final Logger log = Logger.getLogger(ZIP.class);
+
+    /**
+     * Преобразует файл в zip архив
+     * @param file исходный файл
+     * @param name имя для zip архива
+     */
     public static void toZIP(File file, String name) {
+
+        log.info("Запись в архив");
+
         File ZIPFile = new File(name);
 
         try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(ZIPFile));
@@ -28,11 +41,18 @@ public class ZIP {
             zout.closeEntry();
         }
         catch(Exception ex){
-            System.out.println(ex.getMessage());
+           log.error(ex.toString());
         }
     }
 
+    /**
+     * Разархивирует zip рхив
+     * @param ZIPFile zip архив
+     * @return файл из архива
+     */
     public static File fromZIP(File ZIPFile) {
+
+        log.info("Чтение из архива");
 
         File file = new File("resultFromZip");
 
@@ -49,12 +69,18 @@ public class ZIP {
 
             zip.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
 
         return file;
     }
 
+    /**
+     * Записывает данные из поток in в поток out
+     * @param in поток для чтения данных
+     * @param out поток для записи данных
+     * @throws IOException
+     */
     private static void write(InputStream in, OutputStream out) throws IOException {
         byte[] buffer = new byte[1024];
         int len;

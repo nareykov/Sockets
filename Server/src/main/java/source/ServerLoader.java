@@ -1,5 +1,7 @@
 package source;
 
+import org.apache.log4j.Logger;
+import source.classes.DOMParser;
 import source.classes.ZIP;
 import source.packet.OPacket;
 
@@ -11,7 +13,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Created by narey on 23.03.2017.
+ * Главный класс сервера
  */
 public class ServerLoader {
 
@@ -22,14 +24,23 @@ public class ServerLoader {
     private static String adminPass = "admin";
     private static File root = new File("Archives");
 
-    public static void main(String[] args) {
+    private static final Logger log = Logger.getLogger(ServerLoader.class);
 
+    /**
+     * Запуск сервера
+     * @param args
+     */
+    public static void main(String[] args) {
         start();
         handle();
         end();
     }
 
+    /**
+     * Подготовка к работе сервера
+     */
     private static void start() {
+        log.info("Запуск сервера");
         root.mkdir();
 
         File idFile = new File("idFile");
@@ -64,13 +75,19 @@ public class ServerLoader {
         }
     }
 
+    /**
+     * Старт нового потока ServerHandler
+     */
     private static void handle() {
         handler = new ServerHandler(server);
         handler.start();
-        readChat();
+        read();
     }
 
-    private static void readChat() {
+    /**
+     * Читает команды из консоли
+     */
+    private static void read() {
         Scanner scan = new Scanner(System.in);
         while (true) {
             if (scan.hasNextLine()) {
@@ -95,11 +112,15 @@ public class ServerLoader {
         return handler;
     }
 
+    /**
+     * Завершение работы сервера
+     */
     public static void end() {
+        log.info("Завершение работы сервера");
         try {
             server.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         }
         System.exit(0);
     }

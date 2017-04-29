@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by narey on 11.04.2017.
+ * Окно регистрации нового пользователя
  */
 public class RegisterWindow {
 
