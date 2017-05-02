@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Client_jar</output-path>
     <root id="archive" name="Client.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/Client/src/main/resouces/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/Client/src/main/resources/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="Client" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar" path-in-jar="/" />

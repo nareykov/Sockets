@@ -36,10 +36,10 @@ public class MainWindow {
         JToolBar toolBar = new JToolBar(JToolBar.VERTICAL);
         toolBar.setFloatable(false);
 
-        ImageIcon refreshImg = new ImageIcon("Client\\src\\main\\resources\\S015.png");
-        ImageIcon backImg = new ImageIcon("Client\\src\\main\\resources\\S017.png");
-        ImageIcon caseImg = new ImageIcon("Client\\src\\main\\resources\\S085.png");
-        ImageIcon delImg = new ImageIcon("Client\\src\\main\\resources\\S016.png");
+        ImageIcon refreshImg = new ImageIcon("S015.png");
+        ImageIcon backImg = new ImageIcon("S017.png");
+        ImageIcon caseImg = new ImageIcon("S085.png");
+        ImageIcon delImg = new ImageIcon("S016.png");
 
         JButton refreshBtn = new JButton(new ImageIcon(refreshImg.getImage().getScaledInstance(30, 30, refreshImg.getImage().SCALE_DEFAULT)));
         refreshBtn.setBorderPainted(false);

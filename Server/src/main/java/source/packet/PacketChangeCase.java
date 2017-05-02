@@ -6,10 +6,7 @@ import source.classes.Case;
 import source.classes.DOMParser;
 import source.classes.ZIP;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
@@ -39,13 +36,42 @@ public class PacketChangeCase extends OPacket {
 
     @Override
     public void read(ObjectInputStream ois) throws IOException {
-        try {
-            file = (File) ois.readObject();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        file = write(ois.readUTF());
         name = ois.readUTF();
         id = ois.readInt();
+    }
+
+    /**
+     * Создает файл из переданной строки
+     * @param text исходная строка
+     * @return результат файл
+     */
+    public static File write(String text) {
+
+        File file = new File("fromClient.xml");
+
+        try {
+            //проверяем, что если файл не существует то создаем его
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            //PrintWriter обеспечит возможности записи в файл
+            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
+
+            try {
+                //Записываем текст у файл
+                out.print(text);
+            } finally {
+                //После чего мы должны закрыть файл
+                //Иначе файл не запишется
+                out.close();
+            }
+        } catch(IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return file;
     }
 
     @Override

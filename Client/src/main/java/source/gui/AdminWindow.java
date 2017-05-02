@@ -32,7 +32,7 @@ public class AdminWindow {
         JToolBar toolBar = new JToolBar(JToolBar.VERTICAL);
         toolBar.setFloatable(false);
 
-        ImageIcon backImg = new ImageIcon("Client\\src\\main\\resources\\S017.png");
+        ImageIcon backImg = new ImageIcon("S017.png");
 
         JButton backBtn = new JButton(new ImageIcon(backImg.getImage().getScaledInstance(30, 30, backImg.getImage().SCALE_DEFAULT)));
         backBtn.setBorderPainted(false);

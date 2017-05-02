@@ -1,0 +1,341 @@
+2017-04-29 11:08:44 INFO  ServerLoader:43 - Запуск сервера
+2017-04-29 11:08:58 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=57922,localport=8888]
+2017-04-29 11:08:58 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-04-29 11:09:21 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:09:21 ERROR DataBase:277 - java.sql.SQLException: ResultSet closed
+2017-04-29 11:09:21 INFO  DataBase:137 - Recorded into Users successfully
+2017-04-29 11:09:21 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:09:26 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:09:26 ERROR DataBase:167 - qwerty enter
+2017-04-29 11:09:26 ERROR DataBase:177 - java.sql.SQLException: ResultSet closed
+2017-04-29 11:09:26 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:09:32 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:09:32 ERROR DataBase:167 - nareykov enter
+2017-04-29 11:09:32 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:09:38 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:09:38 ERROR DataBase:167 - nareykov enter
+2017-04-29 11:09:38 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:09:38 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:09:38 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:09:46 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:09:46 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:09:49 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:09:49 INFO  DataBase:247 - Changing q priority to 0
+2017-04-29 11:09:49 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:10:01 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:10:01 ERROR DataBase:167 - nareykov enter
+2017-04-29 11:10:01 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:10:01 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:10:01 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:10:08 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:10:08 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:10:11 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:10:11 INFO  DataBase:247 - Changing nareykov priority to 2
+2017-04-29 11:10:11 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:10:24 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:10:24 ERROR DataBase:167 - nareykov enter
+2017-04-29 11:10:24 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:10:24 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:10:24 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:11:05 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:11:05 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-04-29 11:11:05 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:11:05 INFO  ZIP:26 - Запись в архив
+2017-04-29 11:11:05 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:11:05 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:12:06 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:12:06 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-04-29 11:12:06 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:12:06 INFO  ZIP:26 - Запись в архив
+2017-04-29 11:12:06 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:12:06 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:12:51 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:12:51 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-04-29 11:12:51 INFO  DataBase:117 - Database closed successfully
+2017-04-29 11:12:51 INFO  ZIP:26 - Запись в архив
+2017-04-29 11:12:51 INFO  DataBase:62 - Opened database successfully
+2017-04-29 11:12:51 INFO  DataBase:117 - Database closed successfully
+2017-04-29 13:38:27 INFO  ServerLoader:43 - Запуск сервера
+2017-04-29 13:40:01 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=59090,localport=8888]
+2017-04-29 13:40:01 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-04-29 13:40:07 INFO  DataBase:62 - Opened database successfully
+2017-04-29 13:40:07 INFO  DataBase:167 - q enter
+2017-04-29 13:40:07 INFO  DataBase:117 - Database closed successfully
+2017-04-29 13:40:07 INFO  DataBase:62 - Opened database successfully
+2017-04-29 13:40:07 INFO  DataBase:117 - Database closed successfully
+2017-04-29 13:40:12 INFO  ZIP:55 - Чтение из архива
+2017-04-29 13:40:12 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-04-29 13:40:12 INFO  ZIP:55 - Чтение из архива
+2017-04-29 13:40:12 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-04-29 13:40:15 INFO  ZIP:55 - Чтение из архива
+2017-04-29 13:40:15 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-04-29 13:40:16 INFO  ZIP:55 - Чтение из архива
+2017-04-29 13:40:16 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-04-29 13:40:18 INFO  ZIP:55 - Чтение из архива
+2017-04-29 13:40:18 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-04-29 13:40:24 INFO  ZIP:55 - Чтение из архива
+2017-04-29 13:40:24 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-04-29 14:40:52 INFO  ServerLoader:43 - Запуск сервера
+2017-04-29 15:51:51 INFO  ServerLoader:43 - ������ �������
+2017-04-29 15:51:56 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=60647,localport=8888]
+2017-04-29 15:51:57 INFO  ClientHandle:34 - ������ ������ ������ - ����������� �������
+2017-04-29 15:52:00 INFO  DataBase:62 - Opened database successfully
+2017-04-29 15:52:00 INFO  DataBase:167 - q enter
+2017-04-29 15:52:00 INFO  DataBase:117 - Database closed successfully
+2017-04-29 15:52:00 INFO  DataBase:62 - Opened database successfully
+2017-04-29 15:52:00 INFO  DataBase:117 - Database closed successfully
+2017-04-29 15:52:19 INFO  ServerLoader:119 - ���������� ������ �������
+2017-04-29 16:09:47 INFO  ServerLoader:44 - ������ �������
+2017-04-29 16:10:01 INFO  ServerLoader:120 - ���������� ������ �������
+2017-04-29 16:14:41 INFO  ServerLoader:44 - ������ �������
+2017-04-29 16:16:56 INFO  ServerLoader:44 - ������ �������
+2017-05-02 00:22:58 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 00:23:05 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51103,localport=8888]
+2017-05-02 00:23:05 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 00:23:14 INFO  DataBase:62 - Opened database successfully
+2017-05-02 00:23:14 INFO  DataBase:117 - Database closed successfully
+2017-05-02 00:23:38 INFO  ServerLoader:120 - Завершение работы сервера
+2017-05-02 00:23:38 ERROR ServerHandler:34 - java.net.SocketException: socket closed
+2017-05-02 00:50:28 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 00:51:24 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 00:51:33 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51216,localport=8888]
+2017-05-02 00:51:33 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 00:51:38 INFO  DataBase:62 - Opened database successfully
+2017-05-02 00:51:38 INFO  DataBase:117 - Database closed successfully
+2017-05-02 00:51:44 INFO  DataBase:62 - Opened database successfully
+2017-05-02 00:51:44 INFO  DataBase:167 - q enter
+2017-05-02 00:51:44 INFO  DataBase:117 - Database closed successfully
+2017-05-02 00:51:44 INFO  DataBase:62 - Opened database successfully
+2017-05-02 00:51:44 INFO  DataBase:117 - Database closed successfully
+2017-05-02 00:51:46 INFO  ZIP:55 - Чтение из архива
+2017-05-02 00:51:46 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 00:51:56 INFO  ZIP:55 - Чтение из архива
+2017-05-02 00:51:56 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 00:51:58 INFO  ZIP:55 - Чтение из архива
+2017-05-02 00:51:58 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:03:06 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 01:03:13 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51241,localport=8888]
+2017-05-02 01:03:13 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 01:03:22 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:03:22 INFO  DataBase:167 - nareykov enter
+2017-05-02 01:03:22 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:03:22 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:03:22 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:03:29 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:03:29 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-05-02 01:03:29 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:03:29 INFO  ZIP:26 - Запись в архив
+2017-05-02 01:03:29 ERROR ZIP:46 - java.io.FileNotFoundException: archive.xml (Не удается найти указанный файл)
+2017-05-02 01:03:29 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:03:29 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:03:30 INFO  ZIP:57 - Чтение из архива
+2017-05-02 01:03:30 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:03:33 INFO  ZIP:57 - Чтение из архива
+2017-05-02 01:03:33 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:03:38 INFO  ZIP:57 - Чтение из архива
+2017-05-02 01:03:38 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:03:41 INFO  ZIP:57 - Чтение из архива
+2017-05-02 01:03:41 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:03:43 INFO  ZIP:57 - Чтение из архива
+2017-05-02 01:03:43 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:32:10 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 01:32:14 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51388,localport=8888]
+2017-05-02 01:32:14 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 01:32:21 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:32:21 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:32:25 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:32:25 INFO  DataBase:167 - q enter
+2017-05-02 01:32:25 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:32:25 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:32:25 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:32:29 INFO  ZIP:55 - Чтение из архива
+2017-05-02 01:32:29 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:32:33 INFO  ZIP:55 - Чтение из архива
+2017-05-02 01:32:33 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:32:36 INFO  ZIP:55 - Чтение из архива
+2017-05-02 01:32:36 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 01:33:06 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:33:06 INFO  DataBase:167 - nareykov enter
+2017-05-02 01:33:06 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:33:06 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:33:06 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:33:11 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:33:11 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-05-02 01:33:11 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:33:11 INFO  ZIP:26 - Запись в архив
+2017-05-02 01:33:11 ERROR ZIP:44 - java.io.FileNotFoundException: archive.xml (Не удается найти указанный файл)
+2017-05-02 01:33:11 INFO  DataBase:62 - Opened database successfully
+2017-05-02 01:33:11 INFO  DataBase:117 - Database closed successfully
+2017-05-02 01:33:12 INFO  ZIP:55 - Чтение из архива
+2017-05-02 01:33:12 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:10:50 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 02:11:15 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 02:11:20 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51547,localport=8888]
+2017-05-02 02:11:20 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 02:11:23 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:11:23 INFO  DataBase:167 - q enter
+2017-05-02 02:11:23 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:11:23 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:11:23 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:11:25 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:11:25 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:11:36 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:11:36 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:11:42 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:11:42 INFO  DataBase:247 - Changing q priority to 2
+2017-05-02 02:11:42 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:11:45 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:11:45 INFO  DataBase:167 - q enter
+2017-05-02 02:11:45 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:11:45 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:11:45 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:11:55 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:11:55 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-05-02 02:11:56 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:11:56 INFO  ZIP:26 - Запись в архив
+2017-05-02 02:11:56 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:11:56 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:11:57 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:11:57 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:17:32 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 02:17:36 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51583,localport=8888]
+2017-05-02 02:17:36 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 02:17:40 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:17:40 INFO  DataBase:167 - q enter
+2017-05-02 02:17:40 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:17:40 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:17:40 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:17:44 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:17:44 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-05-02 02:17:44 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:17:44 INFO  ZIP:26 - Запись в архив
+2017-05-02 02:17:44 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:17:44 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:17:48 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:17:48 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:17:58 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:17:58 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:18:01 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:18:01 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:18:03 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:18:03 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:18:06 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:18:06 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:18:07 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:18:07 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:18:09 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:18:09 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:18:21 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:18:21 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-05-02 02:18:21 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:18:21 INFO  ZIP:26 - Запись в архив
+2017-05-02 02:18:21 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:18:21 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:18:23 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:18:23 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:22:07 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 02:22:13 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51616,localport=8888]
+2017-05-02 02:22:13 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 02:22:19 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:22:19 INFO  DataBase:167 - q enter
+2017-05-02 02:22:19 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:22:19 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:22:19 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:22:27 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:22:27 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-05-02 02:22:27 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:22:27 INFO  ZIP:26 - Запись в архив
+2017-05-02 02:22:27 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:22:27 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:22:28 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:22:28 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:22:30 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:22:30 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:22:38 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:22:38 INFO  DataBase:226 - Changing name: id(8) to qwe uu
+2017-05-02 02:22:38 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:22:38 INFO  ZIP:26 - Запись в архив
+2017-05-02 02:22:38 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:22:38 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:22:39 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:22:39 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:22:41 INFO  ZIP:55 - Чтение из архива
+2017-05-02 02:22:41 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 02:22:54 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:22:54 INFO  DataBase:226 - Changing name: id(5) to Пиздюк Иннокентий
+2017-05-02 02:22:54 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:22:54 INFO  ZIP:26 - Запись в архив
+2017-05-02 02:22:54 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:22:54 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:24:22 INFO  ServerLoader:45 - ������ �������
+2017-05-02 02:24:29 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51629,localport=8888]
+2017-05-02 02:24:29 INFO  ClientHandle:34 - ������ ������ ������ - ����������� �������
+2017-05-02 02:24:33 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:24:33 INFO  DataBase:167 - q enter
+2017-05-02 02:24:33 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:24:34 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:24:34 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:24:46 INFO  ZIP:55 - ������ �� ������
+2017-05-02 02:24:46 INFO  StAXParser:29 - ������ xml ����� (StAX)
+2017-05-02 02:24:50 INFO  ZIP:55 - ������ �� ������
+2017-05-02 02:24:50 INFO  StAXParser:29 - ������ xml ����� (StAX)
+2017-05-02 02:24:57 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:24:57 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-05-02 02:24:57 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:24:57 INFO  ZIP:26 - ������ � �����
+2017-05-02 02:24:57 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:24:57 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:24:59 INFO  ZIP:55 - ������ �� ������
+2017-05-02 02:24:59 INFO  StAXParser:29 - ������ xml ����� (StAX)
+2017-05-02 02:55:25 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 02:55:39 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51797,localport=8888]
+2017-05-02 02:55:39 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 02:55:41 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:55:41 INFO  DataBase:167 - q enter
+2017-05-02 02:55:41 INFO  DataBase:117 - Database closed successfully
+2017-05-02 02:55:42 INFO  DataBase:62 - Opened database successfully
+2017-05-02 02:55:42 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:01:49 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 03:02:00 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51864,localport=8888]
+2017-05-02 03:02:00 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 03:02:03 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:02:03 INFO  DataBase:167 - q enter
+2017-05-02 03:02:03 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:02:03 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:02:03 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:02:10 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:02:10 INFO  DataBase:157 - Recorded into FileBase successfully
+2017-05-02 03:02:10 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:02:10 INFO  ZIP:26 - Запись в архив
+2017-05-02 03:02:10 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:02:10 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:02:12 INFO  ZIP:55 - Чтение из архива
+2017-05-02 03:02:12 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 03:08:35 INFO  ServerLoader:45 - Запуск сервера
+2017-05-02 03:08:45 INFO  ServerHandler:29 - Accepted Socket[addr=/127.0.0.1,port=51892,localport=8888]
+2017-05-02 03:08:45 INFO  ClientHandle:34 - Запуск нового потока - обработчика клиента
+2017-05-02 03:08:48 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:08:48 INFO  DataBase:167 - q enter
+2017-05-02 03:08:48 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:08:48 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:08:48 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:08:50 INFO  ZIP:55 - Чтение из архива
+2017-05-02 03:08:50 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 03:08:54 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:08:54 INFO  DataBase:226 - Changing name: id(7) to rrrrrrasd rf
+2017-05-02 03:08:54 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:08:54 INFO  ZIP:26 - Запись в архив
+2017-05-02 03:08:54 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:08:54 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:08:55 INFO  ZIP:55 - Чтение из архива
+2017-05-02 03:08:55 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 03:08:57 INFO  ZIP:55 - Чтение из архива
+2017-05-02 03:08:57 INFO  StAXParser:29 - Чтение xml файла (StAX)
+2017-05-02 03:09:00 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:09:00 INFO  DataBase:226 - Changing name: id(5) to hytyty Иннокентий
+2017-05-02 03:09:00 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:09:00 INFO  ZIP:26 - Запись в архив
+2017-05-02 03:09:01 INFO  DataBase:62 - Opened database successfully
+2017-05-02 03:09:01 INFO  DataBase:117 - Database closed successfully
+2017-05-02 03:09:02 INFO  ZIP:55 - Чтение из архива
+2017-05-02 03:09:02 INFO  StAXParser:29 - Чтение xml файла (StAX)
